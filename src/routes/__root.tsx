@@ -1,9 +1,11 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { QUESTIONS } from "@/data/questions";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "NetTech Frontend CBT";
+const DESCRIPTION = `${QUESTIONS.length}-question NetTech-style frontend CBT quiz covering HTML, CSS, JavaScript, React, Node, APIs, Git, and more.`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -13,8 +15,7 @@ export const Route = createRootRoute({
       { title: APP_NAME },
       {
         name: "description",
-        content:
-          "150-question NetTech-style frontend CBT quiz covering HTML, CSS, JavaScript, React, Node, APIs, Git, and more.",
+        content: DESCRIPTION,
       },
       { name: "theme-color", content: "#0c0e12" },
     ],

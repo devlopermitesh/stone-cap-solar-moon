@@ -20,8 +20,8 @@ export function StartScreen() {
           Frontend CBT
         </h1>
         <p className="max-w-xl text-base leading-relaxed text-muted">
-          150 multiple-choice questions. Pick an answer — wrong choices turn
-          red, the correct option turns green. Review every item at the end.
+          {QUESTIONS.length} multiple-choice questions. Pick an answer — wrong choices turn red, the
+          correct option turns green. Review every item at the end.
         </p>
       </header>
 
@@ -33,7 +33,9 @@ export function StartScreen() {
         <span className="flex items-center gap-3">
           <ListChecks className="size-5" strokeWidth={1.75} />
           <span>
-            <span className="block text-base font-semibold">Full test · 150 questions</span>
+            <span className="block text-base font-semibold">
+              Full test · {QUESTIONS.length} questions
+            </span>
             <span className="block text-sm opacity-70">All topics, one sitting</span>
           </span>
         </span>
