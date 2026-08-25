@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0e12;
+  --color-surface: #16181e;
+  --color-elevated: #1e2128;
+  --color-fg: #ecece8;
+  --color-muted: #8b8f98;
+  --color-subtle: #6a6e76;
+  --color-accent: #7d9a8a;
+  --color-accent-fg: #0c0e12;
+  --color-correct: #3d8b6e;
+  --color-correct-bg: #163328;
+  --color-wrong: #c45c4a;
+  --color-wrong-bg: #3a1c18;
+  --color-border: #2a2d35;
+  --color-ring: #7d9a8a;
+  --font-sans: "Segoe UI", "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

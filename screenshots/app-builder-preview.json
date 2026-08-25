@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "NetTech Frontend CBT",
+      "hasCanvas": false,
+      "bodyTextLen": 405,
+      "bodyTextHash": "cfd84ad1cfeb9386382faa72cce10ff350fa986febdb1a213e5a731099075846",
+      "bodyTextPrefix": "NETTECH INTERVIEW PREP Frontend CBT 150 multiple-choice question",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "NetTech Frontend CBT",
+      "hasCanvas": false,
+      "bodyTextLen": 405,
+      "bodyTextHash": "cfd84ad1cfeb9386382faa72cce10ff350fa986febdb1a213e5a731099075846",
+      "bodyTextPrefix": "NETTECH INTERVIEW PREP Frontend CBT 150 multiple-choice question",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

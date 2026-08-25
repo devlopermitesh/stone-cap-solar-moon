@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>og</title>
+  <style>
+    @font-face {
+      font-family: "Syne";
+      font-weight: 800;
+      src: url("../fonts/8vIH7w4qzmVxm2BL9A.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      font-weight: 500;
+      src: url("../fonts/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2") format("woff2");
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; background: #0c0e12; }
+    .stage {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      background:
+        radial-gradient(ellipse 70% 80% at 50% 52%, rgba(125, 154, 138, 0.16), transparent 62%),
+        radial-gradient(ellipse 40% 50% at 18% 80%, rgba(61, 139, 110, 0.10), transparent 70%),
+        radial-gradient(ellipse 36% 46% at 84% 18%, rgba(196, 92, 74, 0.08), transparent 70%),
+        #0c0e12;
+      color: #ecece8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(236, 236, 232, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(236, 236, 232, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
+    }
+    .scan {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(12, 14, 18, 0.18) 0 1px,
+        transparent 1px 3px
+      );
+      pointer-events: none;
+    }
+    .chev {
+      position: absolute;
+      top: 50%;
+      width: 220px;
+      height: 360px;
+      transform: translateY(-50%);
+      opacity: 0.22;
+    }
+    .chev.left { left: 56px; }
+    .chev.right { right: 56px; }
+    .hud {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border: 2px solid #7d9a8a;
+      opacity: 0.55;
+    }
+    .hud.tl { top: 36px; left: 36px; border-right: 0; border-bottom: 0; }
+    .hud.tr { top: 36px; right: 36px; border-left: 0; border-bottom: 0; }
+    .hud.bl { bottom: 36px; left: 36px; border-right: 0; border-top: 0; }
+    .hud.br { bottom: 36px; right: 36px; border-left: 0; border-top: 0; }
+    .lockup {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 720px;
+    }
+    .mark {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 15px;
+      letter-spacing: 0.42em;
+      color: #7d9a8a;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-family: "Syne", "Liberation Sans Narrow", sans-serif;
+      font-weight: 800;
+      font-size: 92px;
+      line-height: 0.92;
+      letter-spacing: 0.12em;
+      color: #ecece8;
+    }
+    h1 span {
+      display: block;
+      font-size: 58px;
+      letter-spacing: 0.16em;
+      margin-top: 6px;
+    }
+    .rule {
+      width: 168px;
+      height: 3px;
+      background: #7d9a8a;
+      margin: 22px auto 16px;
+      border-radius: 2px;
+    }
+    .tag {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 16px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #7d9a8a;
+    }
+    .dots {
+      position: absolute;
+      left: 50%;
+      bottom: 52px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .dot.c { background: #3d8b6e; }
+    .dot.a { background: #7d9a8a; }
+    .dot.w { background: #c45c4a; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="grid"></div>
+    <svg class="chev left" viewBox="0 0 120 200" fill="none" aria-hidden="true">
+      <path d="M88 12 L18 100 L88 188" stroke="#7d9a8a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="chev right" viewBox="0 0 120 200" fill="none" aria-hidden="true">
+      <path d="M32 12 L102 100 L32 188" stroke="#7d9a8a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="hud tl"></div>
+    <div class="hud tr"></div>
+    <div class="hud bl"></div>
+    <div class="hud br"></div>
+    <div class="lockup">
+      <div class="mark"></></div>
+      <h1>NETTECH<span>FRONTEND CBT</span></h1>
+      <div class="rule"></div>
+      <div class="tag">frontend exam</div>
+    </div>
+    <div class="dots">
+      <div class="dot c"></div>
+      <div class="dot a"></div>
+      <div class="dot w"></div>
+    </div>
+    <div class="scan"></div>
+  </div>
+</body>
+</html>
