@@ -28,7 +28,8 @@ export const QUESTIONS: Question[] = [
       "Prevents the script from executing",
     ],
     answer: 2,
-    explanation: "defer downloads the script in parallel with HTML parsing and executes it after the document is parsed, in order.",
+    explanation:
+      "defer downloads the script in parallel with HTML parsing and executes it after the document is parsed, in order.",
   },
   {
     id: 3,
@@ -41,12 +42,14 @@ export const QUESTIONS: Question[] = [
       "It replaces ARIA completely",
     ],
     answer: 1,
-    explanation: "Semantic tags communicate structure to browsers, assistive tech, and search engines.",
+    explanation:
+      "Semantic tags communicate structure to browsers, assistive tech, and search engines.",
   },
   {
     id: 4,
     topic: "HTML5",
-    question: "Which element is best for a self-contained composition that could stand alone (blog post, news item)?",
+    question:
+      "Which element is best for a self-contained composition that could stand alone (blog post, news item)?",
     options: ["<article>", "<span>", "<header>", "<main>"],
     answer: 0,
     explanation: "<article> is for independently distributable content.",
@@ -75,13 +78,19 @@ export const QUESTIONS: Question[] = [
       "sessionStorage can store objects natively",
     ],
     answer: 1,
-    explanation: "Both store strings. localStorage survives restarts; sessionStorage is cleared when the tab/session ends.",
+    explanation:
+      "Both store strings. localStorage survives restarts; sessionStorage is cleared when the tab/session ends.",
   },
   {
     id: 7,
     topic: "HTML5",
     question: "How do you read a custom data attribute data-user-id from an element?",
-    options: ["el.getAttribute('user-id')", "el.dataset.userId", "el.data.userId", "el.dataset['data-user-id']"],
+    options: [
+      "el.getAttribute('user-id')",
+      "el.dataset.userId",
+      "el.data.userId",
+      "el.dataset['data-user-id']",
+    ],
     answer: 1,
     explanation: "dataset converts data-user-id to camelCase userId.",
   },
@@ -125,7 +134,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 12,
     topic: "HTML5",
-    question: "What does <input type=\"email\"> provide?",
+    question: 'What does <input type="email"> provide?',
     options: [
       "Server-side encryption",
       "A text field with email format hinting and mobile keyboard",
@@ -133,7 +142,8 @@ export const QUESTIONS: Question[] = [
       "It only works in Chrome",
     ],
     answer: 1,
-    explanation: "It is still a text control, with built-in format validation and better mobile keyboards.",
+    explanation:
+      "It is still a text control, with built-in format validation and better mobile keyboards.",
   },
   {
     id: 13,
@@ -151,10 +161,12 @@ export const QUESTIONS: Question[] = [
   {
     id: 14,
     topic: "HTML5",
-    question: "Which element lets you provide art-direction sources (different crops per breakpoint)?",
+    question:
+      "Which element lets you provide art-direction sources (different crops per breakpoint)?",
     options: ["<img srcset>", "<picture>", "<source-set>", "<responsive>"],
     answer: 1,
-    explanation: "<picture> with <source media> is for art direction; srcset is mainly for resolution switching.",
+    explanation:
+      "<picture> with <source media> is for art direction; srcset is mainly for resolution switching.",
   },
   {
     id: 15,
@@ -167,15 +179,17 @@ export const QUESTIONS: Question[] = [
       "Is optional for all images including informative ones",
     ],
     answer: 1,
-    explanation: "Informative images need meaningful alt; decorative images should use alt=\"\".",
+    explanation: 'Informative images need meaningful alt; decorative images should use alt="".',
   },
   {
     id: 16,
     topic: "CSS3",
-    question: "With box-sizing: content-box (default), which is NOT included in the specified width?",
+    question:
+      "With box-sizing: content-box (default), which is NOT included in the specified width?",
     options: ["content width", "padding", "border", "margin"],
     answer: 3,
-    explanation: "Margin is always outside the box. padding and border are outside content-box width.",
+    explanation:
+      "Margin is always outside the box. padding and border are outside content-box width.",
   },
   {
     id: 17,
@@ -248,13 +262,19 @@ export const QUESTIONS: Question[] = [
       "static with z-index",
     ],
     answer: 1,
-    explanation: "Sticky is a hybrid of relative and fixed, constrained by the nearest scroll ancestor.",
+    explanation:
+      "Sticky is a hybrid of relative and fixed, constrained by the nearest scroll ancestor.",
   },
   {
     id: 23,
     topic: "CSS3",
     question: "z-index only applies when the element is:",
-    options: ["display: block", "positioned (not static) or a flex/grid item in some cases", "floated", "inline"],
+    options: [
+      "display: block",
+      "positioned (not static) or a flex/grid item in some cases",
+      "floated",
+      "inline",
+    ],
     answer: 1,
     explanation: "z-index is ignored on position: static except for flex/grid items.",
   },
@@ -282,7 +302,8 @@ export const QUESTIONS: Question[] = [
       "SEO only",
     ],
     answer: 1,
-    explanation: "Creating a BFC (e.g. overflow: auto, display: flow-root) contains floats and isolates margins.",
+    explanation:
+      "Creating a BFC (e.g. overflow: auto, display: flow-root) contains floats and isolates margins.",
   },
   {
     id: 26,
@@ -290,7 +311,8 @@ export const QUESTIONS: Question[] = [
     question: "Which is generally cheaper to animate for 60fps?",
     options: ["top/left", "transform and opacity", "width/height", "margin"],
     answer: 1,
-    explanation: "transform and opacity can often run on the compositor without layout/paint of the whole page.",
+    explanation:
+      "transform and opacity can often run on the compositor without layout/paint of the whole page.",
   },
   {
     id: 27,
@@ -303,7 +325,8 @@ export const QUESTIONS: Question[] = [
       "first-child ignores tag name",
     ],
     answer: 1,
-    explanation: "If a heading comes first, p:first-child matches nothing; p:first-of-type still matches the first paragraph.",
+    explanation:
+      "If a heading comes first, p:first-child matches nothing; p:first-of-type still matches the first paragraph.",
   },
   {
     id: 28,
@@ -322,7 +345,12 @@ export const QUESTIONS: Question[] = [
     id: 29,
     topic: "CSS3",
     question: "How do you declare a CSS custom property?",
-    options: [":root { --accent: #7d9a8a; }", ":root { $accent: #7d9a8a; }", "var accent = #7d9a8a", "css.accent = #7d9a8a"],
+    options: [
+      ":root { --accent: #7d9a8a; }",
+      ":root { $accent: #7d9a8a; }",
+      "var accent = #7d9a8a",
+      "css.accent = #7d9a8a",
+    ],
     answer: 0,
     explanation: "Custom properties use --name and are read with var(--name).",
   },
@@ -350,7 +378,8 @@ export const QUESTIONS: Question[] = [
       "none is still focusable",
     ],
     answer: 1,
-    explanation: "display: none is not in the accessibility tree/layout; visibility: hidden keeps the box.",
+    explanation:
+      "display: none is not in the accessibility tree/layout; visibility: hidden keeps the box.",
   },
   {
     id: 32,
@@ -380,7 +409,7 @@ export const QUESTIONS: Question[] = [
     code: "console.log(typeof null);",
     options: ['"null"', '"object"', '"undefined"', '"number"'],
     answer: 1,
-    explanation: "A long-standing language quirk: typeof null === \"object\".",
+    explanation: 'A long-standing language quirk: typeof null === "object".',
   },
   {
     id: 35,
@@ -445,7 +474,8 @@ export const QUESTIONS: Question[] = [
       "Automatically speeding up I/O",
     ],
     answer: 1,
-    explanation: "await pauses the async function until the Promise settles; it still is non-blocking.",
+    explanation:
+      "await pauses the async function until the Promise settles; it still is non-blocking.",
   },
   {
     id: 41,
@@ -458,7 +488,8 @@ export const QUESTIONS: Question[] = [
       "A type of object freeze",
     ],
     answer: 0,
-    explanation: "Closures capture the lexical environment — used in callbacks, modules, and hooks.",
+    explanation:
+      "Closures capture the lexical environment — used in callbacks, modules, and hooks.",
   },
   {
     id: 42,
@@ -471,7 +502,8 @@ export const QUESTIONS: Question[] = [
       "obj.clone()",
     ],
     answer: 2,
-    explanation: "Spread and Object.assign are shallow. JSON clone drops functions, Dates, undefined, etc.",
+    explanation:
+      "Spread and Object.assign are shallow. JSON clone drops functions, Dates, undefined, etc.",
   },
   {
     id: 43,
@@ -547,7 +579,7 @@ export const QUESTIONS: Question[] = [
     id: 49,
     topic: "JavaScript",
     question: "What does obj?.name return if obj is null?",
-    options: ["Error", "null", "undefined", "\"name\""],
+    options: ["Error", "null", "undefined", '"name"'],
     answer: 2,
     explanation: "Optional chaining short-circuits to undefined.",
   },
@@ -557,7 +589,8 @@ export const QUESTIONS: Question[] = [
     question: "What is the result of null ?? 'fallback'?",
     options: ["null", "'fallback'", "undefined", "0"],
     answer: 1,
-    explanation: "?? only falls through for null or undefined, unlike || which also treats 0 and ''.",
+    explanation:
+      "?? only falls through for null or undefined, unlike || which also treats 0 and ''.",
   },
   {
     id: 51,
@@ -570,7 +603,8 @@ export const QUESTIONS: Question[] = [
       "for...of only works on objects",
     ],
     answer: 1,
-    explanation: "Use for...of for arrays/iterables. Avoid for...in on arrays (it hits inherited keys).",
+    explanation:
+      "Use for...of for arrays/iterables. Avoid for...in on arrays (it hits inherited keys).",
   },
   {
     id: 52,
@@ -649,9 +683,15 @@ export const QUESTIONS: Question[] = [
     id: 58,
     topic: "JavaScript",
     question: "Accessing a let variable before its declaration throws because of:",
-    options: ["Garbage collection", "The temporal dead zone", "Strict mode only", "Hoisting being disabled"],
+    options: [
+      "Garbage collection",
+      "The temporal dead zone",
+      "Strict mode only",
+      "Hoisting being disabled",
+    ],
     answer: 1,
-    explanation: "let/const are hoisted but uninitialized until the declaration is evaluated (TDZ).",
+    explanation:
+      "let/const are hoisted but uninitialized until the declaration is evaluated (TDZ).",
   },
   {
     id: 59,
@@ -690,7 +730,8 @@ export const QUESTIONS: Question[] = [
       "It is required for SEO",
     ],
     answer: 1,
-    explanation: "Stable unique keys (not array index if the list can reorder) help reconciliation.",
+    explanation:
+      "Stable unique keys (not array index if the list can reorder) help reconciliation.",
   },
   {
     id: 62,
@@ -953,7 +994,7 @@ export const QUESTIONS: Question[] = [
       "import only works in browsers",
     ],
     answer: 1,
-    explanation: "package.json \"type\": \"module\" enables ESM. Interop exists but has caveats.",
+    explanation: 'package.json "type": "module" enables ESM. Interop exists but has caveats.',
   },
   {
     id: 83,
@@ -966,13 +1007,19 @@ export const QUESTIONS: Question[] = [
       "Replace package.json",
     ],
     answer: 1,
-    explanation: "Never expose secret env vars to the browser without a VITE_/public prefix policy.",
+    explanation:
+      "Never expose secret env vars to the browser without a VITE_/public prefix policy.",
   },
   {
     id: 84,
     topic: "Node.js",
     question: "Preferred way to read a file without blocking the event loop?",
-    options: ["fs.readFileSync", "fs.promises.readFile or fs.readFile with callback", "require('file.txt')", "eval"],
+    options: [
+      "fs.readFileSync",
+      "fs.promises.readFile or fs.readFile with callback",
+      "require('file.txt')",
+      "eval",
+    ],
     answer: 1,
     explanation: "Sync fs methods block the single thread; async does not.",
   },
@@ -1251,12 +1298,7 @@ export const QUESTIONS: Question[] = [
     id: 107,
     topic: "REST APIs",
     question: "HTTP 204 No Content typically means:",
-    options: [
-      "Error",
-      "Success with an empty body (e.g. DELETE)",
-      "Redirect",
-      "Unauthorized",
-    ],
+    options: ["Error", "Success with an empty body (e.g. DELETE)", "Redirect", "Unauthorized"],
     answer: 1,
     explanation: "The action succeeded; there is nothing to return.",
   },
@@ -1337,7 +1379,12 @@ export const QUESTIONS: Question[] = [
     id: 114,
     topic: "SQL",
     question: "In SQL, NULL = NULL evaluates to:",
-    options: ["TRUE", "UNKNOWN/NULL (use IS NULL)", "FALSE always in all engines with no exceptions", "0"],
+    options: [
+      "TRUE",
+      "UNKNOWN/NULL (use IS NULL)",
+      "FALSE always in all engines with no exceptions",
+      "0",
+    ],
     answer: 1,
     explanation: "Three-valued logic: compare NULLs with IS NULL / IS NOT NULL.",
   },
@@ -1387,7 +1434,12 @@ export const QUESTIONS: Question[] = [
     id: 119,
     topic: "MongoDB",
     question: "Every MongoDB document has:",
-    options: ["A required email field", "An _id field (unique in the collection)", "A foreign key to SQL", "A CSS class"],
+    options: [
+      "A required email field",
+      "An _id field (unique in the collection)",
+      "A foreign key to SQL",
+      "A CSS class",
+    ],
     answer: 1,
     explanation: "If you omit _id, MongoDB generates an ObjectId.",
   },
@@ -1763,5 +1815,1325 @@ export const QUESTIONS: Question[] = [
     ],
     answer: 1,
     explanation: "AI is a pair programmer, not an owner. Guard data and review diffs.",
+  },
+  {
+    id: 151,
+    topic: "HTML5",
+    question: "Which HTML5 tag is used to define the main content of a document?",
+    options: ["<section>", "<main>", "<content>", "<body>"],
+    answer: 1,
+    explanation:
+      "<main> wraps the dominant content unique to the page; there should be only one per document.",
+  },
+  {
+    id: 152,
+    topic: "HTML5",
+    question: "Which attribute is used to make an HTML element editable by the user?",
+    options: ["editable", "contenteditable", "isEditable", "userEdit"],
+    answer: 1,
+    explanation: "contenteditable makes an element's contents editable directly in the browser.",
+  },
+  {
+    id: 153,
+    topic: "HTML5",
+    question: "Which tag is used to embed audio content in HTML5?",
+    options: ["<sound>", "<media>", "<audio>", "<embed>"],
+    answer: 2,
+    explanation: "<audio> embeds sound content with attributes like src and controls.",
+  },
+  {
+    id: 154,
+    topic: "HTML5",
+    question: "Which tag is used to draw graphics via scripting in HTML5?",
+    options: ["<graphic>", "<draw>", "<canvas>", "<svg-draw>"],
+    answer: 2,
+    explanation: "<canvas> provides a bitmap drawing surface manipulated via JavaScript.",
+  },
+  {
+    id: 155,
+    topic: "HTML5",
+    question: "Which HTML5 element is used to group header content or introductory content?",
+    options: ["<top>", "<header>", "<head>", "<intro>"],
+    answer: 1,
+    explanation:
+      "<header> holds introductory content such as logos and headings for its section or page.",
+  },
+  {
+    id: 156,
+    topic: "HTML5",
+    question: "What is the purpose of the <datalist> element?",
+    options: [
+      "Displays a table",
+      "Provides a list of pre-defined options for an input",
+      "Creates a dropdown menu style",
+      "Defines a data structure",
+    ],
+    answer: 1,
+    explanation:
+      "Linked to an input via list/id, <datalist> offers autocomplete suggestions while allowing free typing.",
+  },
+  {
+    id: 157,
+    topic: "HTML5",
+    question:
+      "Which tag defines self-contained content that could stand apart from the site flow, e.g. a sidebar or widget?",
+    options: ["<aside>", "<widget>", "<section>", "<div>"],
+    answer: 0,
+    explanation:
+      "<aside> marks indirectly related content (sidebars, widgets) separate from the main flow.",
+  },
+  {
+    id: 158,
+    topic: "HTML5",
+    question: "Which doctype declaration is correct for HTML5?",
+    options: ["<!DOCTYPE html5>", "<!DOCTYPE HTML PUBLIC>", "<!DOCTYPE html>", "<!DOC html>"],
+    answer: 2,
+    explanation: "The HTML5 doctype is simply <!DOCTYPE html>, which triggers standards mode.",
+  },
+  {
+    id: 159,
+    topic: "CSS3",
+    question:
+      "Which CSS property is used to create space between the border and content of an element?",
+    options: ["margin", "padding", "spacing", "border-space"],
+    answer: 1,
+    explanation:
+      "Padding is inner spacing between content and border; margin sits outside the border.",
+  },
+  {
+    id: 160,
+    topic: "CSS3",
+    question: "Which CSS Grid property defines the number and size of columns?",
+    options: ["grid-template-columns", "grid-columns", "column-template", "grid-layout"],
+    answer: 0,
+    explanation:
+      "grid-template-columns defines the column tracks, e.g. grid-template-columns: repeat(3, 1fr).",
+  },
+  {
+    id: 161,
+    topic: "CSS3",
+    question: "Which property is used to change the text color of an element?",
+    options: ["font-color", "text-color", "color", "foreground-color"],
+    answer: 2,
+    explanation: "color sets the foreground/text color; font-color and text-color do not exist.",
+  },
+  {
+    id: 162,
+    topic: "CSS3",
+    question: "What does the CSS box-sizing: border-box property do?",
+    options: [
+      "Removes the border",
+      "Includes padding and border in the element's total width/height",
+      "Adds a shadow",
+      "Hides overflow content",
+    ],
+    answer: 1,
+    explanation:
+      "With border-box, declared width/height include padding and border, so boxes size predictably.",
+  },
+  {
+    id: 163,
+    topic: "CSS3",
+    question: "Which CSS selector targets an element with a specific class?",
+    options: ["#classname", ".classname", "*classname", "classname{}"],
+    answer: 1,
+    explanation: ".classname selects by class; # selects by id.",
+  },
+  {
+    id: 164,
+    topic: "CSS3",
+    question: "What is the correct way to apply media queries for responsive design?",
+    options: ["@responsive", "@media", "@screen", "@query"],
+    answer: 1,
+    explanation: "@media (condition) { ... } applies styles when the viewport condition matches.",
+  },
+  {
+    id: 165,
+    topic: "CSS3",
+    question: "Which property is used to create smooth transitions between CSS property changes?",
+    options: ["animation", "transform", "transition", "effect"],
+    answer: 2,
+    explanation:
+      "transition interpolates between two states over time; animation drives keyframe sequences.",
+  },
+  {
+    id: 166,
+    topic: "CSS3",
+    question:
+      "Which value of position removes an element from normal flow and positions it relative to its nearest positioned ancestor?",
+    options: ["static", "relative", "absolute", "sticky"],
+    answer: 2,
+    explanation:
+      "position: absolute takes the element out of flow, anchoring it to the nearest positioned ancestor.",
+  },
+  {
+    id: 167,
+    topic: "CSS3",
+    question: "What does 'flex: 1' commonly do to a flex item?",
+    options: [
+      "Fixes its width permanently",
+      "Allows it to grow and shrink to fill available space",
+      "Hides the item",
+      "Centers the item only",
+    ],
+    answer: 1,
+    explanation:
+      "flex: 1 sets flex-grow/shrink/basis so the item absorbs free space along the main axis.",
+  },
+  {
+    id: 168,
+    topic: "JavaScript",
+    question: "What does the spread operator (...) do in JavaScript?",
+    options: [
+      "Declares a new function",
+      "Expands an iterable into individual elements",
+      "Combines two strings",
+      "Deletes array elements",
+    ],
+    answer: 1,
+    explanation:
+      "... spreads array/string elements or object properties into calls, literals, and merges.",
+  },
+  {
+    id: 169,
+    topic: "JavaScript",
+    question: "Which of the following is a correct arrow function syntax?",
+    options: [
+      "function => (a, b) { return a+b; }",
+      "(a, b) => a + b",
+      "=> (a, b) { a + b }",
+      "arrow (a, b) { return a+b }",
+    ],
+    answer: 1,
+    explanation: "Arrow functions place params before =>; an expression body returns implicitly.",
+  },
+  {
+    id: 170,
+    topic: "JavaScript",
+    question: "What does the JavaScript const keyword guarantee?",
+    options: [
+      "The variable's value can never change in any way",
+      "The variable binding cannot be reassigned",
+      "It creates a global variable",
+      "It is hoisted like var",
+    ],
+    answer: 1,
+    explanation:
+      "const locks the binding — reassignment throws, though object/array contents can still mutate.",
+  },
+  {
+    id: 171,
+    topic: "JavaScript",
+    question: "Which ES6 feature allows extracting values from arrays/objects into variables?",
+    options: ["Template literals", "Destructuring", "Generators", "Proxies"],
+    answer: 1,
+    explanation: "Destructuring unpacks values via patterns, e.g. const { name } = user.",
+  },
+  {
+    id: 172,
+    topic: "JavaScript",
+    question: "What is a Promise in JavaScript used for?",
+    options: [
+      "Styling elements",
+      "Handling asynchronous operations",
+      "Declaring classes",
+      "Looping through arrays",
+    ],
+    answer: 1,
+    explanation:
+      "A Promise represents the eventual result of async work: pending → fulfilled/rejected.",
+  },
+  {
+    id: 173,
+    topic: "JavaScript",
+    question: "Which keyword is used to define a class in ES6?",
+    options: ["class", "function", "object", "struct"],
+    answer: 0,
+    explanation: "class declares a class; under the hood it is prototype-based sugar.",
+  },
+  {
+    id: 174,
+    topic: "JavaScript",
+    question: "Which array method removes the last element from an array and returns it?",
+    options: ["shift()", "pop()", "splice()", "slice()"],
+    answer: 1,
+    explanation: "pop() removes/returns the last element; shift() does the same for the first.",
+  },
+  {
+    id: 175,
+    topic: "JavaScript",
+    question: "What does JSON.stringify() do?",
+    options: [
+      "Parses a JSON string into an object",
+      "Converts a JavaScript object into a JSON string",
+      "Validates JSON syntax",
+      "Removes JSON formatting",
+    ],
+    answer: 1,
+    explanation:
+      "JSON.stringify serializes a value to a JSON string; JSON.parse goes the other way.",
+  },
+  {
+    id: 176,
+    topic: "JavaScript",
+    question: "Which method is used to add an event listener to a DOM element?",
+    options: ["addEvent()", "addEventListener()", "attachEvent()", "onEvent()"],
+    answer: 1,
+    explanation:
+      "el.addEventListener('click', fn) attaches handlers; attachEvent is legacy IE-only.",
+  },
+  {
+    id: 177,
+    topic: "JavaScript",
+    question: "Which of the following correctly creates a template literal?",
+    options: ["'Hello ' + name", "`Hello ${name}`", '""Hello"" .. name', "Hello(${name})"],
+    answer: 1,
+    explanation: "Backticks define template literals and ${} interpolates expressions.",
+  },
+  {
+    id: 178,
+    topic: "JavaScript",
+    question: "What is the purpose of the 'export' and 'import' keywords in ES6?",
+    options: [
+      "To handle exceptions",
+      "To share and use code/modules across files",
+      "To create loops",
+      "To define classes",
+    ],
+    answer: 1,
+    explanation: "export exposes bindings from a module; import pulls them into another file.",
+  },
+  {
+    id: 179,
+    topic: "JavaScript",
+    question: "Which method converts an array-like or iterable object to an actual array?",
+    options: ["Array.from()", "Array.of()", "Array.convert()", "Array.make()"],
+    answer: 0,
+    explanation: "Array.from builds a real array from iterables or array-likes like NodeList.",
+  },
+  {
+    id: 180,
+    topic: "JavaScript",
+    question:
+      "What does 'this' refer to inside a regular JavaScript function (non-arrow) called as a method?",
+    options: [
+      "The global object always",
+      "The object the method is called on",
+      "undefined always",
+      "The function itself",
+    ],
+    answer: 1,
+    explanation:
+      "For obj.fn(), this binds to obj at call time; arrows instead capture this lexically.",
+  },
+  {
+    id: 181,
+    topic: "JavaScript",
+    question: "Which method is used to combine two or more arrays?",
+    options: ["concat()", "merge()", "join()", "combine()"],
+    answer: 0,
+    explanation: "arr.concat(other) returns a new merged array without mutating the originals.",
+  },
+  {
+    id: 182,
+    topic: "JavaScript",
+    question: "What is the correct way to handle errors in async/await code?",
+    options: ["if/else", "try/catch", "switch/case", "throw/return"],
+    answer: 1,
+    explanation: "await inside try/catch catches a rejected Promise as an exception.",
+  },
+  {
+    id: 183,
+    topic: "JavaScript",
+    question: "What does the setTimeout() function do?",
+    options: [
+      "Executes code repeatedly at intervals",
+      "Executes code once after a specified delay",
+      "Stops code execution permanently",
+      "Pauses the main thread synchronously",
+    ],
+    answer: 1,
+    explanation: "setTimeout schedules its callback once after the delay; setInterval repeats.",
+  },
+  {
+    id: 184,
+    topic: "React",
+    question: "What is JSX in React?",
+    options: [
+      "A database query language",
+      "A syntax extension that allows writing HTML-like code in JavaScript",
+      "A CSS framework",
+      "A testing library",
+    ],
+    answer: 1,
+    explanation:
+      "JSX lets you describe UI in HTML-like syntax that compiles down to element objects.",
+  },
+  {
+    id: 185,
+    topic: "React",
+    question: "Which hook is used to manage state in a functional React component?",
+    options: ["useEffect", "useState", "useRef", "useContext"],
+    answer: 1,
+    explanation: "useState returns a state value and its setter, triggering re-renders on update.",
+  },
+  {
+    id: 186,
+    topic: "React",
+    question: "Which lifecycle-equivalent hook runs after every render by default?",
+    options: ["useState", "useEffect", "useRef", "useMemo"],
+    answer: 1,
+    explanation:
+      "Without a dependency array, useEffect runs after every render; [] limits it to mount.",
+  },
+  {
+    id: 187,
+    topic: "React",
+    question: "Which command is used to create a new React app using Create React App?",
+    options: [
+      "npm init react-app",
+      "npx create-react-app my-app",
+      "npm react new",
+      "react new-app",
+    ],
+    answer: 1,
+    explanation:
+      "npx create-react-app scaffolds a project without a global install (Vite is the modern default).",
+  },
+  {
+    id: 188,
+    topic: "React",
+    question: "What is the purpose of React Router?",
+    options: [
+      "State management",
+      "Enabling client-side navigation/routing in single-page applications",
+      "API calls",
+      "Form validation",
+    ],
+    answer: 1,
+    explanation: "React Router maps URLs to components so SPAs navigate without full page reloads.",
+  },
+  {
+    id: 189,
+    topic: "React",
+    question: "Which of these is a valid way to conditionally render JSX?",
+    options: [
+      "if/else statements only inside JSX",
+      "Ternary operators or && inside JSX",
+      "Only CSS classes",
+      "React does not support conditional rendering",
+    ],
+    answer: 1,
+    explanation: "JSX accepts expressions, not statements — use ternaries, &&, or early returns.",
+  },
+  {
+    id: 190,
+    topic: "React",
+    question: "In React, what happens when you call setState/useState's setter?",
+    options: [
+      "The component is deleted and recreated",
+      "React schedules a re-render of the component",
+      "Nothing happens until page reload",
+      "It updates the DOM directly without re-rendering",
+    ],
+    answer: 1,
+    explanation:
+      "Updates are queued and batched; React re-renders and reconciles rather than mutating directly.",
+  },
+  {
+    id: 191,
+    topic: "React",
+    question: "What is Next.js primarily known for in the React ecosystem?",
+    options: [
+      "A CSS-in-JS library",
+      "A React framework supporting server-side rendering and static site generation",
+      "A state management library",
+      "A testing framework",
+    ],
+    answer: 1,
+    explanation: "Next.js layers SSR/SSG, routing, and build tooling on top of React.",
+  },
+  {
+    id: 192,
+    topic: "React",
+    question: "What does 'props drilling' refer to?",
+    options: [
+      "Passing props through multiple nested components that don't need them, just to reach a deeper child",
+      "A React debugging tool",
+      "A method of styling components",
+      "A way to fetch APIs",
+    ],
+    answer: 0,
+    explanation:
+      "Drilling threads props through intermediate layers; Context or state libraries avoid it.",
+  },
+  {
+    id: 193,
+    topic: "React",
+    question: "Which npm package is commonly used for global state management in React apps?",
+    options: ["Axios", "Redux", "Lodash", "Express"],
+    answer: 1,
+    explanation: "Redux provides predictable global state; Zustand is a lighter alternative.",
+  },
+  {
+    id: 194,
+    topic: "React",
+    question: "What is the correct file extension typically used for React components with JSX?",
+    options: [".react", ".jsx", ".rjs", ".xjs"],
+    answer: 1,
+    explanation: ".jsx marks JSX files (.tsx when using TypeScript).",
+  },
+  {
+    id: 195,
+    topic: "React",
+    question: "What is server-side rendering (SSR) in the context of Next.js?",
+    options: [
+      "Rendering HTML on the client only",
+      "Rendering pages on the server before sending HTML to the client",
+      "Storing data in a database",
+      "A CSS rendering technique",
+    ],
+    answer: 1,
+    explanation:
+      "SSR generates HTML per request on the server, improving first paint and SEO before hydration.",
+  },
+  {
+    id: 196,
+    topic: "Node.js",
+    question: "What is npm used for?",
+    options: [
+      "Compiling CSS",
+      "Managing JavaScript packages/dependencies",
+      "Rendering HTML",
+      "Database migrations only",
+    ],
+    answer: 1,
+    explanation: "npm installs and manages packages plus project scripts.",
+  },
+  {
+    id: 197,
+    topic: "Node.js",
+    question: "Which built-in Node.js module is used to work with the file system?",
+    options: ["http", "fs", "path", "os"],
+    answer: 1,
+    explanation:
+      "fs reads/writes files; fs/promises offers promise-based APIs. path handles paths, os OS info.",
+  },
+  {
+    id: 198,
+    topic: "Node.js",
+    question: "What does 'npm install' do when run without a package name?",
+    options: [
+      "Installs a specific global package",
+      "Installs all dependencies listed in package.json",
+      "Deletes node_modules",
+      "Updates Node.js itself",
+    ],
+    answer: 1,
+    explanation: "A bare npm install pulls every dependency from package.json into node_modules.",
+  },
+  {
+    id: 199,
+    topic: "Node.js",
+    question: "What is the purpose of the 'package.json' file?",
+    options: [
+      "Stores compiled JavaScript",
+      "Contains project metadata and dependency information",
+      "Stores database schema",
+      "Stores CSS styles",
+    ],
+    answer: 1,
+    explanation:
+      "package.json records metadata, scripts, and dependency versions for reproducible installs.",
+  },
+  {
+    id: 200,
+    topic: "Node.js",
+    question: "Which command starts a Node.js server file named 'server.js'?",
+    options: ["node server.js", "run server.js", "start server.js", "npm server.js"],
+    answer: 0,
+    explanation: "Execute scripts with the node runtime: node server.js.",
+  },
+  {
+    id: 201,
+    topic: "Node.js",
+    question: "What does 'nodemon' do during development?",
+    options: [
+      "Deploys the app to production",
+      "Automatically restarts the Node.js server when file changes are detected",
+      "Minifies JavaScript",
+      "Manages the database",
+    ],
+    answer: 1,
+    explanation:
+      "nodemon watches your files and restarts the process on change during development.",
+  },
+  {
+    id: 202,
+    topic: "Express.js",
+    question:
+      "Which package is commonly used in Express apps for authentication using JSON Web Tokens?",
+    options: ["jsonwebtoken", "bcrypt only", "express-session only", "cors"],
+    answer: 0,
+    explanation:
+      "jsonwebtoken signs/verifies JWTs; bcrypt is for password hashing and is often paired with it.",
+  },
+  {
+    id: 203,
+    topic: "REST APIs",
+    question: "What does CORS stand for and relate to in a Node/Express backend?",
+    options: [
+      "Cross-Origin Resource Sharing, controlling access from different domains",
+      "A database indexing method",
+      "A CSS layout system",
+      "A caching strategy",
+    ],
+    answer: 0,
+    explanation:
+      "CORS lets servers declare which origins browsers may allow to read their responses.",
+  },
+  {
+    id: 204,
+    topic: "REST APIs",
+    question: "Which HTTP status code indicates a successful request?",
+    options: ["404", "500", "200", "302"],
+    answer: 2,
+    explanation: "2xx codes signal success; 200 is the generic OK.",
+  },
+  {
+    id: 205,
+    topic: "REST APIs",
+    question: "What does a 404 HTTP status code mean?",
+    options: ["Server error", "Resource not found", "Unauthorized access", "Successful creation"],
+    answer: 1,
+    explanation: "404 tells the client no resource exists at the requested URL.",
+  },
+  {
+    id: 206,
+    topic: "REST APIs",
+    question: "Which HTTP method is idempotent and used to remove a resource?",
+    options: ["GET", "POST", "DELETE", "PATCH"],
+    answer: 2,
+    explanation:
+      "DELETE removes a resource and is idempotent — repeating it changes nothing further.",
+  },
+  {
+    id: 207,
+    topic: "REST APIs",
+    question: "What is an API endpoint?",
+    options: [
+      "A database table",
+      "A specific URL where an API can be accessed by a client",
+      "A CSS class",
+      "A JavaScript variable",
+    ],
+    answer: 1,
+    explanation:
+      "An endpoint is one URL + method combination the API exposes, e.g. GET /api/users.",
+  },
+  {
+    id: 208,
+    topic: "REST APIs",
+    question: "What is the purpose of API versioning (e.g., /api/v1/)?",
+    options: [
+      "To make the API slower",
+      "To manage changes without breaking existing client integrations",
+      "To encrypt data",
+      "To reduce server load only",
+    ],
+    answer: 1,
+    explanation:
+      "Version prefixes let breaking changes ship under /v2 while existing clients keep using /v1.",
+  },
+  {
+    id: 209,
+    topic: "REST APIs",
+    question: "Which status code range generally indicates client errors?",
+    options: ["1xx", "2xx", "4xx", "5xx"],
+    answer: 2,
+    explanation: "4xx = client mistakes (bad input, unauthorized); 5xx = server-side failures.",
+  },
+  {
+    id: 210,
+    topic: "REST APIs",
+    question: "What is the purpose of an API key or token in REST API authentication?",
+    options: [
+      "To style the response",
+      "To identify and authorize the client making the request",
+      "To compress the response",
+      "To format JSON",
+    ],
+    answer: 1,
+    explanation:
+      "Keys/tokens authenticate callers so the server can enforce access control per client.",
+  },
+  {
+    id: 211,
+    topic: "REST APIs",
+    question: "What does 'statelessness' mean in REST architecture?",
+    options: [
+      "The server stores client session state between requests",
+      "Each request must contain all information needed to understand it; no client context is stored on the server",
+      "The API has no state at all, ever",
+      "Requests cannot be repeated",
+    ],
+    answer: 1,
+    explanation:
+      "Each request carries its own auth/context, keeping servers simple to scale horizontally.",
+  },
+  {
+    id: 212,
+    topic: "REST APIs",
+    question: "Which tool is commonly used to test and debug REST APIs manually?",
+    options: ["Postman", "Photoshop", "Figma", "Webpack"],
+    answer: 0,
+    explanation:
+      "Postman (and curl/Insomnia) sends manual requests so you can inspect responses quickly.",
+  },
+  {
+    id: 213,
+    topic: "SQL",
+    question: "Which SQL keyword is used to sort the result set?",
+    options: ["SORT BY", "ORDER BY", "GROUP BY", "ARRANGE BY"],
+    answer: 1,
+    explanation: "ORDER BY col ASC|DESC sorts output rows; GROUP BY groups them instead.",
+  },
+  {
+    id: 214,
+    topic: "SQL",
+    question: "Which SQL command is used to add a new row to a table?",
+    options: ["ADD", "INSERT INTO", "CREATE ROW", "APPEND"],
+    answer: 1,
+    explanation: "INSERT INTO table (cols) VALUES (...) adds new rows.",
+  },
+  {
+    id: 215,
+    topic: "SQL",
+    question: "Which SQL command is used to modify existing records in a table?",
+    options: ["MODIFY", "UPDATE", "CHANGE", "ALTER ROW"],
+    answer: 1,
+    explanation:
+      "UPDATE table SET col = ... WHERE ... changes existing rows — always pair with WHERE!",
+  },
+  {
+    id: 216,
+    topic: "SQL",
+    question: "What does a FOREIGN KEY do?",
+    options: [
+      "Uniquely identifies a row in the same table",
+      "Links a column in one table to the primary key of another table",
+      "Encrypts the column data",
+      "Creates an index automatically",
+    ],
+    answer: 1,
+    explanation:
+      "A foreign key references another table's primary key, enforcing referential integrity.",
+  },
+  {
+    id: 217,
+    topic: "SQL",
+    question: "What does the SQL command 'DELETE FROM table WHERE condition' do?",
+    options: [
+      "Deletes the entire table",
+      "Removes rows matching the specified condition",
+      "Deletes the database",
+      "Renames the table",
+    ],
+    answer: 1,
+    explanation: "DELETE removes matching rows; DROP TABLE would remove the whole structure.",
+  },
+  {
+    id: 218,
+    topic: "SQL",
+    question: "Which of the following is an aggregate function in SQL?",
+    options: ["SELECT()", "COUNT()", "WHERE()", "JOIN()"],
+    answer: 1,
+    explanation:
+      "COUNT(), SUM(), AVG(), MIN(), MAX() compute over sets of rows (usually with GROUP BY).",
+  },
+  {
+    id: 219,
+    topic: "SQL",
+    question: "What is normalization in database design primarily used for?",
+    options: [
+      "Increasing data redundancy",
+      "Organizing data to reduce redundancy and improve data integrity",
+      "Encrypting the database",
+      "Speeding up the CPU",
+    ],
+    answer: 1,
+    explanation:
+      "Normal forms split data into well-structured tables to cut duplication and update anomalies.",
+  },
+  {
+    id: 220,
+    topic: "SQL",
+    question: "Which SQL statement is used to create a new table?",
+    options: ["CREATE TABLE", "NEW TABLE", "MAKE TABLE", "ADD TABLE"],
+    answer: 0,
+    explanation: "CREATE TABLE defines a table's columns and constraints (DDL).",
+  },
+  {
+    id: 221,
+    topic: "SQL",
+    question: "What does the SQL 'LIKE' operator do?",
+    options: [
+      "Compares exact numeric values",
+      "Searches for a specified pattern in a column",
+      "Joins two tables",
+      "Deletes matching rows",
+    ],
+    answer: 1,
+    explanation: "LIKE matches patterns using % (any characters) and _ (a single character).",
+  },
+  {
+    id: 222,
+    topic: "SQL",
+    question:
+      "Which command is used to remove an entire table structure and its data from a database?",
+    options: ["DELETE TABLE", "DROP TABLE", "REMOVE TABLE", "CLEAR TABLE"],
+    answer: 1,
+    explanation: "DROP TABLE deletes both the schema and all rows; DELETE only removes rows.",
+  },
+  {
+    id: 223,
+    topic: "MongoDB",
+    question: "What type of database is MongoDB?",
+    options: [
+      "Relational (SQL) database",
+      "NoSQL, document-oriented database",
+      "Graph database only",
+      "In-memory cache only",
+    ],
+    answer: 1,
+    explanation:
+      "MongoDB stores flexible BSON documents in collections instead of rigid tables/rows.",
+  },
+  {
+    id: 224,
+    topic: "MongoDB",
+    question: "What is a 'collection' in MongoDB equivalent to in a relational database?",
+    options: ["A row", "A table", "A column", "A database itself"],
+    answer: 1,
+    explanation:
+      "Collections group documents roughly like tables — but without enforcing a fixed schema by default.",
+  },
+  {
+    id: 225,
+    topic: "MongoDB",
+    question: "Which method is used to insert a single document into a MongoDB collection?",
+    options: ["insertOne()", "addOne()", "createDoc()", "pushOne()"],
+    answer: 0,
+    explanation:
+      "insertOne() adds one document (and returns the inserted _id); insertMany() adds several.",
+  },
+  {
+    id: 226,
+    topic: "MongoDB",
+    question: "What does Mongoose provide for Node.js applications using MongoDB?",
+    options: [
+      "A CSS framework",
+      "An Object Data Modeling (ODM) library with schema validation",
+      "A frontend routing library",
+      "A REST client only",
+    ],
+    answer: 1,
+    explanation: "Mongoose layers schemas, validation, and typed models over the native driver.",
+  },
+  {
+    id: 227,
+    topic: "MongoDB",
+    question:
+      "Which MongoDB operator is used to update specific fields of a document without replacing the whole document?",
+    options: ["$replace", "$set", "$new", "$update"],
+    answer: 1,
+    explanation:
+      "$set patches only the given fields; omitting it with update replaces the entire document.",
+  },
+  {
+    id: 228,
+    topic: "Git",
+    question: "What is Git primarily used for?",
+    options: [
+      "Hosting websites",
+      "Distributed version control of source code",
+      "Database management",
+      "Sending emails",
+    ],
+    answer: 1,
+    explanation:
+      "Git tracks snapshots of your code, enabling history, branches, and collaboration.",
+  },
+  {
+    id: 229,
+    topic: "Git",
+    question: "Which command initializes a new Git repository?",
+    options: ["git start", "git init", "git new", "git create"],
+    answer: 1,
+    explanation: "git init creates the .git repository in the current folder.",
+  },
+  {
+    id: 230,
+    topic: "Git",
+    question: "Which command is used to stage changes before committing?",
+    options: ["git add", "git stage", "git commit -s", "git push"],
+    answer: 0,
+    explanation: "git add moves changes into the staging area that the next commit snapshots.",
+  },
+  {
+    id: 231,
+    topic: "Git",
+    question: "What does 'git clone' do?",
+    options: [
+      "Deletes a repository",
+      "Creates a copy of a remote repository on your local machine",
+      "Merges two branches",
+      "Reverts the last commit",
+    ],
+    answer: 1,
+    explanation: "clone downloads the repo with full history and wires up the origin remote.",
+  },
+  {
+    id: 232,
+    topic: "Git",
+    question: "Which command uploads local commits to a remote repository?",
+    options: ["git upload", "git push", "git send", "git commit --remote"],
+    answer: 1,
+    explanation: "git push publishes your local commits to the remote branch.",
+  },
+  {
+    id: 233,
+    topic: "Git",
+    question: "What does 'git status' show?",
+    options: [
+      "The commit history log",
+      "The current state of the working directory and staging area",
+      "The list of remote branches only",
+      "The Git version installed",
+    ],
+    answer: 1,
+    explanation: "status reports modified/staged/untracked files; history is git log.",
+  },
+  {
+    id: 234,
+    topic: "Git",
+    question: "What is a Pull Request (PR) on GitHub used for?",
+    options: [
+      "Deleting a repository",
+      "Proposing changes from one branch/fork to be reviewed and merged into another",
+      "Downloading a repository",
+      "Creating a new GitHub account",
+    ],
+    answer: 1,
+    explanation: "PRs host review and discussion before merging one branch into another.",
+  },
+  {
+    id: 235,
+    topic: "Git",
+    question: "Which command shows the commit history of a repository?",
+    options: ["git history", "git log", "git commits", "git show-all"],
+    answer: 1,
+    explanation: "git log lists commits (hash, author, message), newest first.",
+  },
+  {
+    id: 236,
+    topic: "Git",
+    question: "What does 'git checkout <branch>' do?",
+    options: [
+      "Deletes the branch",
+      "Switches the working directory to the specified branch",
+      "Merges the branch into main",
+      "Creates a pull request",
+    ],
+    answer: 1,
+    explanation: "checkout switches branches; git switch is the modern dedicated command.",
+  },
+  {
+    id: 237,
+    topic: "OOP",
+    question: "What are the four main pillars of Object-Oriented Programming?",
+    options: [
+      "Loops, Conditions, Functions, Variables",
+      "Encapsulation, Abstraction, Inheritance, Polymorphism",
+      "Compilation, Execution, Debugging, Testing",
+      "Arrays, Objects, Strings, Numbers",
+    ],
+    answer: 1,
+    explanation:
+      "Encapsulation, abstraction, inheritance, and polymorphism are the classic four pillars.",
+  },
+  {
+    id: 238,
+    topic: "OOP",
+    question: "What is method overriding?",
+    options: [
+      "Defining multiple methods with the same name but different parameters in the same class",
+      "A subclass providing a specific implementation of a method already defined in its parent class",
+      "Deleting a method from a class",
+      "Combining two methods into one",
+    ],
+    answer: 1,
+    explanation:
+      "Overriding re-implements an inherited method; overloading varies parameter signatures instead.",
+  },
+  {
+    id: 239,
+    topic: "OOP",
+    question: "What is method overloading?",
+    options: [
+      "Having multiple methods with the same name but different parameters/signatures",
+      "Overriding a parent class method",
+      "Deleting unused methods",
+      "Running a method multiple times in a loop",
+    ],
+    answer: 0,
+    explanation:
+      "Note: JavaScript doesn't support true overloading — a later definition simply wins.",
+  },
+  {
+    id: 240,
+    topic: "OOP",
+    question: "What does 'this' keyword generally refer to in an OOP class context?",
+    options: [
+      "The parent class always",
+      "The current instance of the object",
+      "A global variable",
+      "The class name as a string",
+    ],
+    answer: 1,
+    explanation: "Inside methods/constructors, this references the instance being operated on.",
+  },
+  {
+    id: 241,
+    topic: "OOP",
+    question: "What is a constructor in a class?",
+    options: [
+      "A method that destroys an object",
+      "A special method automatically called when a new object/instance is created",
+      "A static utility function",
+      "A CSS style rule",
+    ],
+    answer: 1,
+    explanation:
+      "The constructor initializes new instances — constructor() runs automatically on creation.",
+  },
+  {
+    id: 242,
+    topic: "OOP",
+    question: "What does 'interface' or 'abstract class' typically enforce in OOP?",
+    options: [
+      "That certain methods must be implemented by subclasses",
+      "That no methods can be added",
+      "That the class cannot be inherited",
+      "That all properties become private automatically",
+    ],
+    answer: 0,
+    explanation: "Abstract members act as contracts concrete subclasses must fulfill.",
+  },
+  {
+    id: 243,
+    topic: "OOP",
+    question: "What is composition in OOP?",
+    options: [
+      "Building complex objects by combining simpler objects rather than through inheritance",
+      "Writing CSS compositions",
+      "A synonym for inheritance",
+      "Deleting unused objects",
+    ],
+    answer: 0,
+    explanation:
+      "Compose small focused objects (has-a) instead of deep inheritance hierarchies (is-a).",
+  },
+  {
+    id: 244,
+    topic: "DSA",
+    question: "What is a linked list?",
+    options: [
+      "A fixed-size contiguous block of memory",
+      "A linear data structure where elements (nodes) point to the next node",
+      "A type of database table",
+      "A sorting algorithm",
+    ],
+    answer: 1,
+    explanation:
+      "Nodes link via pointers: cheap inserts/removals at known positions, but O(n) lookups.",
+  },
+  {
+    id: 245,
+    topic: "DSA",
+    question: "Which sorting algorithm has an average time complexity of O(n log n)?",
+    options: ["Bubble Sort", "Merge Sort", "Selection Sort", "Insertion Sort"],
+    answer: 1,
+    explanation:
+      "Merge sort divides, sorts halves, and merges — O(n log n) on average and worst case.",
+  },
+  {
+    id: 246,
+    topic: "DSA",
+    question: "What is the worst-case time complexity of Bubble Sort?",
+    options: ["O(n log n)", "O(n)", "O(n²)", "O(log n)"],
+    answer: 2,
+    explanation: "Nested comparisons over the array make Bubble Sort quadratic in the worst case.",
+  },
+  {
+    id: 247,
+    topic: "DSA",
+    question: "What is a binary tree?",
+    options: [
+      "A tree where each node has at most two children",
+      "A tree with only leaf nodes",
+      "A linear data structure",
+      "A sorted array",
+    ],
+    answer: 0,
+    explanation:
+      "Binary trees limit each node to left/right children; binary search trees order them for fast lookup.",
+  },
+  {
+    id: 248,
+    topic: "DSA",
+    question: "What is recursion in programming?",
+    options: [
+      "A loop that never terminates",
+      "A function that calls itself to solve smaller instances of a problem",
+      "A way to declare variables",
+      "A type of data structure",
+    ],
+    answer: 1,
+    explanation: "Recursive calls shrink toward a base case — without one they overflow the stack.",
+  },
+  {
+    id: 249,
+    topic: "DSA",
+    question: "What is the space complexity consideration of an in-place sorting algorithm?",
+    options: [
+      "It requires O(n) additional space always",
+      "It uses only a constant amount of extra space, O(1)",
+      "It cannot sort large arrays",
+      "It always uses recursion",
+    ],
+    answer: 1,
+    explanation:
+      "In-place sorts rearrange within the input array (e.g. heapsort), needing ~O(1) extra memory.",
+  },
+  {
+    id: 250,
+    topic: "DSA",
+    question: "What is a graph data structure primarily used to represent?",
+    options: [
+      "A single linear sequence of numbers",
+      "A set of nodes (vertices) connected by edges, representing relationships",
+      "A sorted list only",
+      "A fixed-size array",
+    ],
+    answer: 1,
+    explanation: "Graphs model networks — social connections, maps, dependencies.",
+  },
+  {
+    id: 251,
+    topic: "DSA",
+    question: "Which traversal visits nodes level by level in a tree?",
+    options: [
+      "Depth-First Search (DFS)",
+      "Breadth-First Search (BFS)",
+      "In-order traversal",
+      "Pre-order traversal",
+    ],
+    answer: 1,
+    explanation: "BFS explores breadth-first with a queue; DFS dives deep using a stack/recursion.",
+  },
+  {
+    id: 252,
+    topic: "DSA",
+    question: "What is the purpose of a 'stack' data structure in function calls (call stack)?",
+    options: [
+      "To store CSS styles",
+      "To keep track of function calls and their local execution context",
+      "To store database records",
+      "To render the DOM",
+    ],
+    answer: 1,
+    explanation:
+      "Each call pushes a frame (locals, return address); returning pops it — deep recursion can overflow.",
+  },
+  {
+    id: 253,
+    topic: "DSA",
+    question: "What does 'divide and conquer' refer to as an algorithmic strategy?",
+    options: [
+      "Breaking a problem into smaller subproblems, solving them independently, and combining results",
+      "Running all code in a single function",
+      "Avoiding recursion entirely",
+      "Sorting only small arrays",
+    ],
+    answer: 0,
+    explanation:
+      "Split, solve subproblems, combine results — merge sort and binary search follow this pattern.",
+  },
+  {
+    id: 254,
+    topic: "DSA",
+    question:
+      "What is the time complexity of inserting an element at the beginning of an array (with shifting)?",
+    options: ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+    answer: 2,
+    explanation:
+      "Every existing element must shift right, so front-insertion is linear (vs O(1) for a linked list head).",
+  },
+  {
+    id: 255,
+    topic: "DSA",
+    question:
+      "Which data structure would you typically use to check if there are duplicate elements efficiently?",
+    options: ["Array with linear search", "Hash Set", "Stack", "Queue"],
+    answer: 1,
+    explanation: "A Set gives ~O(1) membership checks — ideal for duplicate detection.",
+  },
+  {
+    id: 256,
+    topic: "DSA",
+    question: "What is dynamic programming primarily used to optimize?",
+    options: [
+      "Only sorting algorithms",
+      "Problems with overlapping subproblems and optimal substructure, by storing/reusing results",
+      "CSS rendering performance",
+      "Database indexing",
+    ],
+    answer: 1,
+    explanation: "DP caches subproblem results (memoization/tabulation) so each is solved once.",
+  },
+  {
+    id: 257,
+    topic: "Debugging",
+    question:
+      "Your React app shows 'Cannot read properties of undefined' when rendering a list before data has loaded. What is the most likely cause and fix?",
+    options: [
+      "The CSS is broken; fix by adding more styles",
+      "The data is undefined initially; add a loading state/conditional check before rendering",
+      "The browser is outdated; update the browser",
+      "The API key is invalid; regenerate it",
+    ],
+    answer: 1,
+    explanation:
+      "Guard against initial undefined with loading flags or optional chaining until data arrives.",
+  },
+  {
+    id: 258,
+    topic: "Debugging",
+    question:
+      "An Express API returns a CORS error when called from your React frontend during development. What is the most appropriate fix?",
+    options: [
+      "Disable the frontend entirely",
+      "Configure and enable the 'cors' middleware on the backend to allow the frontend's origin",
+      "Convert the API to use only GET requests",
+      "Rename all API routes",
+    ],
+    answer: 1,
+    explanation:
+      "The server must opt in: app.use(cors({ origin: ... })) whitelisting the frontend origin.",
+  },
+  {
+    id: 259,
+    topic: "Debugging",
+    question:
+      "A Git push is rejected because the remote has changes you don't have locally. What should you typically do first?",
+    options: [
+      "Force push immediately with --force",
+      "Pull/fetch and merge or rebase the remote changes first, then push",
+      "Delete the remote repository",
+      "Create a brand-new repository",
+    ],
+    answer: 1,
+    explanation:
+      "Integrate remote commits first; force-pushing shared branches destroys others' work.",
+  },
+  {
+    id: 260,
+    topic: "Debugging",
+    question:
+      "Your MongoDB query using find() is running very slowly on a large collection. What is a common first step to improve performance?",
+    options: [
+      "Delete the collection",
+      "Add an appropriate index on the queried field(s)",
+      "Switch to a different programming language",
+      "Disable the database connection",
+    ],
+    answer: 1,
+    explanation:
+      "Check the plan with explain(); an index on the filter fields turns collection scans into seeks.",
+  },
+  {
+    id: 261,
+    topic: "Debugging",
+    question:
+      "A useEffect hook in React is causing an infinite re-render loop. What is the most likely misconfiguration?",
+    options: [
+      "Missing or incorrect dependency array causing the effect to run on every render",
+      "Using too much CSS",
+      "The component has too many props",
+      "The API is too slow",
+    ],
+    answer: 0,
+    explanation: "Setting state inside an effect without correct deps re-triggers it forever.",
+  },
+  {
+    id: 262,
+    topic: "Debugging",
+    question:
+      "An API call using fetch/axios intermittently fails with a timeout. What is a reasonable debugging approach?",
+    options: [
+      "Ignore it since it works sometimes",
+      "Check network conditions, add proper error handling/retries, and inspect server response times/logs",
+      "Rewrite the entire frontend",
+      "Switch to a completely different database",
+    ],
+    answer: 1,
+    explanation:
+      "Measure first: reproduce, log timings, then add timeouts and retries with backoff.",
+  },
+  {
+    id: 263,
+    topic: "Debugging",
+    question:
+      "Your SQL query returns duplicate rows unexpectedly after a JOIN. What is a likely cause?",
+    options: [
+      "The database is corrupted",
+      "The join condition matches multiple rows on one or both sides, causing a cartesian-like effect",
+      "SQL does not support joins",
+      "The table has too many columns",
+    ],
+    answer: 1,
+    explanation:
+      "One-to-many joins fan out rows — check join keys and dedupe or aggregate as needed.",
+  },
+  {
+    id: 264,
+    topic: "Debugging",
+    question:
+      "A Node.js server crashes with 'UnhandledPromiseRejection' in production. What is the best practice to prevent this?",
+    options: [
+      "Ignore promises entirely and use only callbacks",
+      "Always handle promise rejections using try/catch with async/await or .catch()",
+      "Restart the server manually every time",
+      "Remove all async code",
+    ],
+    answer: 1,
+    explanation:
+      "Wrap awaits in try/catch or attach .catch(); process-level handlers are a last-resort net.",
+  },
+  {
+    id: 265,
+    topic: "Communication",
+    question:
+      "A client reports a bug that you cannot reproduce locally. What is the best next step?",
+    options: [
+      "Tell the client it's not a real bug",
+      "Gather more details (steps, environment, logs/screenshots) to reproduce and diagnose the issue",
+      "Ignore the report until it happens again",
+      "Rewrite the whole feature immediately",
+    ],
+    answer: 1,
+    explanation:
+      "Environment differences matter — collect versions, steps, and logs before drawing conclusions.",
   },
 ];

@@ -1,0 +1,201 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which HTML5 tag is used to define the main content of a document?,<section>,<main>,<content>,<body>,B
+Which attribute is used to make an HTML element editable by the user?,editable,contenteditable,isEditable,userEdit,B
+Which tag is used to embed audio content in HTML5?,<sound>,<media>,<audio>,<embed>,C
+What is the correct HTML5 element for navigation links?,<navigation>,<nav>,<links>,<menu>,B
+Which input type is used to restrict input to a valid email format?,type='mail',type='email',type='text',type='validate',B
+Which HTML5 attribute specifies that an input field must be filled out?,validate,required,mandatory,needed,B
+Which tag is used to draw graphics via scripting in HTML5?,<graphic>,<draw>,<canvas>,<svg-draw>,C
+What does the <article> tag represent in HTML5?,A sidebar,A self-contained independent piece of content,A footer,A navigation menu,B
+Which HTML5 element is used to group header content or introductory content?,<top>,<header>,<head>,<intro>,B
+What is the purpose of the <datalist> element?,Displays a table,Provides a list of pre-defined options for an input,Creates a dropdown menu style,Defines a data structure,B
+"Which attribute makes a script execute after the page has loaded, without blocking parsing?",async,defer,delay,lazy,B
+Which HTML5 API is used to store data on the client with no expiration?,sessionStorage,cookies,localStorage,cacheStorage,C
+"Which tag defines a self-contained piece of content that could be removed without affecting the rest of the site, e.g. a widget?",<aside>,<widget>,<section>,<div>,A
+Which doctype declaration is correct for HTML5?,<!DOCTYPE html5>,<!DOCTYPE HTML PUBLIC>,<!DOCTYPE html>,<!DOC html>,C
+What is semantic HTML primarily used for?,Adding styles,Adding meaning/structure to content for browsers and accessibility,Improving animations,Reducing HTTP requests,B
+Which CSS property is used to create space between the border and content of an element?,margin,padding,spacing,border-space,B
+Which CSS layout model is best suited for one-dimensional layouts (row or column)?,Grid,Flexbox,Float,Table,B
+Which CSS Grid property defines the number and size of columns?,grid-template-columns,grid-columns,column-template,grid-layout,A
+Which property is used to change the text color of an element?,font-color,text-color,color,foreground-color,C
+What does the CSS 'box-sizing: border-box' property do?,Removes the border,Includes padding and border in the element's total width/height,Adds a shadow,Hides overflow content,B
+Which CSS selector targets an element with a specific class?,#classname,.classname,*classname,classname{},B
+What is the correct way to apply media queries for responsive design?,@responsive,@media,@screen,@query,B
+Which property controls the stacking order of positioned elements?,z-order,stack-index,z-index,layer,C
+Which CSS unit is relative to the font-size of the root element?,em,px,rem,vh,C
+Which property is used to create smooth transitions between CSS property changes?,animation,transform,transition,effect,C
+Which value of 'position' removes an element from the normal document flow and positions it relative to its nearest positioned ancestor?,static,relative,absolute,sticky,C
+Which CSS pseudo-class targets the first child element of its parent?,:first,:first-child,:child(1),:nth(1),B
+Which CSS feature allows defining reusable custom values?,CSS Variables (Custom Properties),CSS Mixins,CSS Functions,CSS Imports,A
+Which display value is used to create a flex container?,display: flexbox;,display: flex;,display: flex-box;,display: flexible;,B
+What does 'flex: 1' commonly do to a flex item?,Fixes its width permanently,Allows it to grow and shrink to fill available space,Hides the item,Centers the item only,B
+Which keyword is used to declare a block-scoped variable in ES6?,var,let,define,int,B
+What does the spread operator (...) do in JavaScript?,Declares a new function,Expands an iterable into individual elements,Combines two strings,Deletes array elements,B
+Which of the following is a correct arrow function syntax?,"function => (a, b) { return a+b; }","(a, b) => a + b","=> (a, b) { a + b }","arrow (a, b) { return a+b }",B
+What is the output of typeof null in JavaScript?,'null','undefined','object','number',C
+Which method is used to create a new array with the results of calling a function on every element?,forEach(),map(),filter(),reduce(),B
+What does the JavaScript 'const' keyword guarantee?,The variable's value can never change in any way,The variable binding cannot be reassigned,It creates a global variable,It is hoisted like var,B
+Which ES6 feature allows extracting values from arrays/objects into variables?,Template literals,Destructuring,Generators,Proxies,B
+What is a Promise in JavaScript used for?,Styling elements,Handling asynchronous operations,Declaring classes,Looping through arrays,B
+Which keyword is used to define a class in ES6?,class,function,object,struct,A
+What does 'async/await' primarily simplify?,CSS animations,Working with Promises/asynchronous code,DOM manipulation,Variable declarations,B
+Which array method removes the last element from an array and returns it?,shift(),pop(),splice(),slice(),B
+What does JSON.stringify() do?,Parses a JSON string into an object,Converts a JavaScript object into a JSON string,Validates JSON syntax,Removes JSON formatting,B
+Which operator checks both value and type equality in JavaScript?,==,===,=,!=,B
+What is a closure in JavaScript?,A way to close a browser tab,A function that remembers variables from its outer scope even after the outer function has returned,A loop that never ends,A method to end event listeners,B
+Which method is used to add an event listener to a DOM element?,addEvent(),addEventListener(),attachEvent(),onEvent(),B
+What does the '?.' (optional chaining) operator do?,Creates a ternary condition,Safely accesses nested object properties without throwing an error if undefined,Combines two operators,Declares optional parameters,B
+Which of the following correctly creates a template literal?,'Hello ' + name,`Hello ${name}`,"""Hello"" .. name",Hello(${name}),B
+What does Array.prototype.reduce() do?,Filters array elements,Reduces array to a single accumulated value,Sorts the array,Reverses the array,B
+Which statement about 'let' and hoisting is true?,let is hoisted and initialized with undefined,let is hoisted but not initialized (temporal dead zone),let is never hoisted,let behaves exactly like var,B
+What is the purpose of the 'export' and 'import' keywords in ES6?,To handle exceptions,To share and use code/modules across files,To create loops,To define classes,B
+Which method converts an array-like or iterable object to an actual array?,Array.from(),Array.of(),Array.convert(),Array.make(),A
+What does 'this' refer to inside a regular JavaScript function (non-arrow) called as a method?,The global object always,The object the method is called on,undefined always,The function itself,B
+Which method is used to combine two or more arrays?,concat(),merge(),join(),combine(),A
+What is the correct way to handle errors in async/await code?,if/else,try/catch,switch/case,throw/return,B
+What does the 'setTimeout()' function do?,Executes code repeatedly at intervals,Executes code once after a specified delay,Stops code execution permanently,Pauses the main thread synchronously,B
+What is JSX in React?,A database query language,A syntax extension that allows writing HTML-like code in JavaScript,A CSS framework,A testing library,B
+Which hook is used to manage state in a functional React component?,useEffect,useState,useRef,useContext,B
+Which hook is used to perform side effects like data fetching in React?,useState,useMemo,useEffect,useCallback,C
+What is the purpose of 'props' in React?,To store component's local state,To pass data from parent to child components,To style components,To manage routing,B
+What does the virtual DOM help React achieve?,Faster and more efficient UI updates by minimizing direct DOM manipulation,Direct database access,Server-side rendering only,CSS optimization,A
+Which method/hook is used to memoize a computed value in React?,useEffect,useMemo,useState,useReducer,B
+What is a 'key' prop used for in React lists?,Styling list items,"Helping React identify which items have changed, added, or removed",Encrypting data,Sorting the array,B
+Which lifecycle-equivalent hook runs after every render by default?,useState,useEffect,useRef,useMemo,B
+What is the correct way to update state based on the previous state in React?,setState(state + 1),setState(prevState => prevState + 1),state = state + 1,this.state++,B
+What is React Context primarily used for?,Routing between pages,Sharing data across components without prop drilling,Making API calls,Styling components,B
+Which command is used to create a new React app using Create React App?,npm init react-app,npx create-react-app my-app,npm react new,react new-app,B
+What is 'controlled component' in React forms?,A component whose form data is handled by the DOM itself,A component whose form data is handled by React state,A component that cannot be edited,A third-party UI library component,B
+Which hook is used to access a DOM element directly in React?,useState,useRef,useEffect,useContext,B
+What is the purpose of React Router?,State management,Enabling client-side navigation/routing in single-page applications,API calls,Form validation,B
+What does 'lifting state up' mean in React?,Moving state to a higher-level shared parent component so multiple children can access it,Deleting unused state,Using global variables instead of state,Moving state into local storage,A
+Which of these is a valid way to conditionally render JSX?,if/else statements only inside JSX,Ternary operators or && inside JSX,Only CSS classes,React does not support conditional rendering,B
+What is the purpose of 'useCallback' hook?,To memoize a function so it isn't recreated on every render,To fetch data from an API,To manage component state,To create context,A
+"In React, what happens when you call setState/useState's setter?",The component is deleted and recreated,React schedules a re-render of the component,Nothing happens until page reload,It updates the DOM directly without re-rendering,B
+What is Next.js primarily known for in the React ecosystem?,A CSS-in-JS library,A React framework supporting server-side rendering and static site generation,A state management library,A testing framework,B
+What does 'props drilling' refer to?,"Passing props through multiple nested components that don't need them, just to reach a deeper child",A React debugging tool,A method of styling components,A way to fetch APIs,A
+Which npm package is commonly used for global state management in React apps?,Axios,Redux,Lodash,Express,B
+What is the correct file extension typically used for React components with JSX?,.react,.jsx,.rjs,.xjs,B
+What is the purpose of React's 'Fragment' (<>...</>)?,To group multiple elements without adding extra nodes to the DOM,To fetch data,To manage routing,To style children,A
+Which hook would you use to run code only once when a component mounts?,"useEffect(() => {...}, [])",useEffect(() => {...}),useState(() => {...}),useMemo(() => {...}),A
+What is server-side rendering (SSR) in the context of Next.js?,Rendering HTML on the client only,Rendering pages on the server before sending HTML to the client,Storing data in a database,A CSS rendering technique,B
+What is Node.js primarily used for?,Running JavaScript on the server side,Styling web pages,Only front-end animations,Managing databases exclusively,A
+Which module system does Node.js traditionally use by default (CommonJS)?,import/export,require/module.exports,include/using,load/save,B
+What is npm used for?,Compiling CSS,Managing JavaScript packages/dependencies,Rendering HTML,Database migrations only,B
+Which Express.js method is used to define a route that handles GET requests?,app.post(),app.get(),app.route(),app.fetch(),B
+What is middleware in Express.js?,A database connector,"A function that has access to req, res, and next, executed during the request-response cycle",A CSS preprocessor,A frontend routing tool,B
+Which built-in Node.js module is used to work with the file system?,http,fs,path,os,B
+What does 'npm install' do when run without a package name?,Installs a specific global package,Installs all dependencies listed in package.json,Deletes node_modules,Updates Node.js itself,B
+Which Express method is used to serve static files?,express.static(),express.serve(),express.public(),express.assets(),A
+What is the purpose of the 'package.json' file?,Stores compiled JavaScript,Contains project metadata and dependency information,Stores database schema,Stores CSS styles,B
+Which Node.js function is used to require/import a module using CommonJS?,import(),require(),include(),fetchModule(),B
+What does 'next()' do in Express middleware?,Ends the response immediately,Passes control to the next middleware function in the stack,Restarts the server,Deletes the request object,B
+Which HTTP method is typically used to update an existing resource in a REST API?,GET,POST,PUT/PATCH,DELETE,C
+What is the event loop in Node.js responsible for?,Compiling CSS files,"Handling asynchronous, non-blocking operations",Managing database transactions only,Rendering the DOM,B
+Which command starts a Node.js server file named 'server.js'?,node server.js,run server.js,start server.js,npm server.js,A
+"What is the purpose of environment variables (e.g., using dotenv) in Node.js apps?",To store configuration/sensitive data outside of source code,To style the application,To compile the application,To manage React components,A
+Which status code should typically be returned for a successfully created resource via POST?,200,201,301,404,B
+What does CORS stand for and relate to in a Node/Express backend?,"Cross-Origin Resource Sharing, controlling access from different domains",A database indexing method,A CSS layout system,A caching strategy,A
+Which package is commonly used in Express apps for authentication using JSON Web Tokens?,jsonwebtoken,bcrypt only,express-session only,cors,A
+"What is the purpose of body-parsing middleware (e.g., express.json())?",To parse incoming request bodies (like JSON) into a usable JavaScript object,To parse CSS files,To manage routing,To handle file uploads only,A
+What does 'nodemon' do during development?,Deploys the app to production,Automatically restarts the Node.js server when file changes are detected,Minifies JavaScript,Manages the database,B
+What does REST stand for?,Representational State Transfer,Remote Execution State Transfer,Rapid Entity State Transfer,Representational Server Transfer,A
+Which HTTP method is typically used to retrieve data from a REST API?,GET,POST,PUT,DELETE,A
+Which HTTP status code indicates a successful request?,404,500,200,302,C
+What does a 404 HTTP status code mean?,Server error,Resource not found,Unauthorized access,Successful creation,B
+Which HTTP method is idempotent and used to remove a resource?,GET,POST,DELETE,PATCH,C
+What is the primary data format commonly used for REST API request/response bodies?,XML only,JSON,CSV,YAML only,B
+What does a 401 status code typically indicate?,Resource created,Unauthorized (authentication required/failed),Server error,Bad request format,B
+What is an API endpoint?,A database table,A specific URL where an API can be accessed by a client,A CSS class,A JavaScript variable,B
+Which header is commonly used to specify the format of the request body content?,Accept-Language,Content-Type,User-Agent,Cache-Control,B
+"What is the purpose of API versioning (e.g., /api/v1/)?",To make the API slower,To manage changes without breaking existing client integrations,To encrypt data,To reduce server load only,B
+What does 'idempotent' mean in the context of HTTP methods?,The request can never fail,Multiple identical requests have the same effect as a single request,The request always creates a new resource,The request is always cached,B
+Which status code range generally indicates client errors?,1xx,2xx,4xx,5xx,C
+What is the purpose of an API key or token in REST API authentication?,To style the response,To identify and authorize the client making the request,To compress the response,To format JSON,B
+What does 'statelessness' mean in REST architecture?,The server stores client session state between requests,Each request from client to server must contain all information needed to understand it; no client context stored on server,"The API has no state at all, ever",Requests cannot be repeated,B
+Which tool is commonly used to test and debug REST APIs manually?,Postman,Photoshop,Figma,Webpack,A
+Which SQL statement is used to retrieve data from a database?,GET,SELECT,FETCH,RETRIEVE,B
+Which SQL clause is used to filter records based on a condition?,FILTER,WHERE,HAVING only,CONDITION,B
+Which SQL keyword is used to sort the result set?,SORT BY,ORDER BY,GROUP BY,ARRANGE BY,B
+Which type of SQL JOIN returns only matching rows from both tables?,LEFT JOIN,RIGHT JOIN,INNER JOIN,FULL OUTER JOIN,C
+Which SQL command is used to add a new row to a table?,ADD,INSERT INTO,CREATE ROW,APPEND,B
+What is a PRIMARY KEY in a database table?,A column that can contain duplicate values,A unique identifier for each record in a table,A foreign reference to another table,An index used only for sorting,B
+Which SQL command is used to modify existing records in a table?,MODIFY,UPDATE,CHANGE,ALTER ROW,B
+What does a FOREIGN KEY do?,Uniquely identifies a row in the same table,Links a column in one table to the primary key of another table,Encrypts the column data,Creates an index automatically,B
+Which SQL clause is used to group rows sharing a property for aggregate functions?,GROUP BY,ORDER BY,WHERE,JOIN,A
+What does the SQL command 'DELETE FROM table WHERE condition' do?,Deletes the entire table,Removes rows matching the specified condition,Deletes the database,Renames the table,B
+Which of the following is an aggregate function in SQL?,SELECT(),COUNT(),WHERE(),JOIN(),B
+What is normalization in database design primarily used for?,Increasing data redundancy,Organizing data to reduce redundancy and improve data integrity,Encrypting the database,Speeding up the CPU,B
+Which SQL statement is used to create a new table?,CREATE TABLE,NEW TABLE,MAKE TABLE,ADD TABLE,A
+What does the SQL 'LIKE' operator do?,Compares exact numeric values,Searches for a specified pattern in a column,Joins two tables,Deletes matching rows,B
+Which command is used to remove an entire table structure and its data from a database?,DELETE TABLE,DROP TABLE,REMOVE TABLE,CLEAR TABLE,B
+What type of database is MongoDB?,Relational (SQL) database,"NoSQL, document-oriented database",Graph database only,In-memory cache only,B
+"In MongoDB, data is stored in which format?",Rows and columns like SQL tables,BSON documents (JSON-like),XML files,Plain text files,B
+What is a 'collection' in MongoDB equivalent to in a relational database?,A row,A table,A column,A database itself,B
+Which method is used to insert a single document into a MongoDB collection?,insertOne(),addOne(),createDoc(),pushOne(),A
+What does Mongoose provide for Node.js applications using MongoDB?,A CSS framework,An Object Data Modeling (ODM) library with schema validation,A frontend routing library,A REST client only,B
+Which MongoDB method is used to query documents matching certain criteria?,find(),search(),get(),select(),A
+What is a 'document' in MongoDB?,A PDF file stored in the database,A record stored in BSON/JSON-like format within a collection,A SQL table row exclusively,A configuration file,B
+Which MongoDB operator is used to update specific fields of a document without replacing the whole document?,$replace,$set,$new,$update,B
+What is the default unique identifier field automatically added to MongoDB documents?,id,_id,uid,key,B
+Which of these is a key advantage of MongoDB's schema-less/flexible structure?,It enforces strict fixed schemas like SQL,It allows documents in the same collection to have varying fields,It removes the need for indexes,It only works with numeric data,B
+What is Git primarily used for?,Hosting websites,Distributed version control of source code,Database management,Sending emails,B
+Which command initializes a new Git repository?,git start,git init,git new,git create,B
+Which command is used to stage changes before committing?,git add,git stage,git commit -s,git push,A
+Which command creates a permanent snapshot of staged changes with a message?,git save,git commit -m 'message',git snapshot,git record,B
+What does 'git clone' do?,Deletes a repository,Creates a copy of a remote repository on your local machine,Merges two branches,Reverts the last commit,B
+Which command is used to create and switch to a new branch in one step?,git branch -new,git checkout -b branch-name,git switch --new,git make branch-name,B
+What is the purpose of 'git pull'?,Uploads local commits to remote,Fetches and merges changes from a remote repository into the current branch,Deletes the local repository,Creates a new branch,B
+What is a 'merge conflict' in Git?,A syntax error in code,A situation where Git cannot automatically reconcile differing changes to the same part of a file,A network error during push,A missing commit message,B
+Which command uploads local commits to a remote repository?,git upload,git push,git send,git commit --remote,B
+What is the purpose of a '.gitignore' file?,To list files/folders that Git should not track,To store commit history,To configure remote URLs,To store branch names,A
+What does 'git status' show?,The commit history log,The current state of the working directory and staging area,The list of remote branches only,The Git version installed,B
+What is a Pull Request (PR) on GitHub used for?,Deleting a repository,Proposing changes from one branch/fork to be reviewed and merged into another,Downloading a repository,Creating a new GitHub account,B
+Which command shows the commit history of a repository?,git history,git log,git commits,git show-all,B
+What does 'git checkout <branch>' do?,Deletes the branch,Switches the working directory to the specified branch,Merges the branch into main,Creates a pull request,B
+What is the difference between 'git fetch' and 'git pull'?,They are identical in every way,fetch downloads changes without merging; pull downloads and merges them,fetch merges automatically; pull only downloads,fetch deletes branches; pull creates them,B
+What are the four main pillars of Object-Oriented Programming?,"Loops, Conditions, Functions, Variables","Encapsulation, Abstraction, Inheritance, Polymorphism","Compilation, Execution, Debugging, Testing","Arrays, Objects, Strings, Numbers",B
+What is encapsulation in OOP?,Combining multiple classes into one file,"Bundling data and methods that operate on it within a class, restricting direct access to some components",Creating multiple objects from one class,Writing code without functions,B
+What is inheritance in OOP?,A mechanism where a class can inherit properties and methods from another class,A way to encrypt class data,A method to delete unused classes,A type of loop,A
+What is polymorphism in OOP?,"The ability of different classes to be treated through a common interface, often via method overriding",The process of creating multiple databases,Combining CSS and HTML,A way to declare constants,A
+What is abstraction in OOP?,Showing all implementation details to the user,Hiding complex implementation details and exposing only essential features,Removing all classes from a program,Combining multiple functions into a loop,B
+What is a 'class' in OOP?,An instance of an object,A blueprint/template for creating objects,A built-in JavaScript function,A database table only,B
+What is an 'object' in OOP?,A blueprint for creating classes,An instance of a class containing state (data) and behavior (methods),A type of loop,A CSS selector,B
+What is method overriding?,Defining multiple methods with the same name but different parameters in the same class,A subclass providing a specific implementation of a method already defined in its parent class,Deleting a method from a class,Combining two methods into one,B
+What is method overloading?,Having multiple methods with the same name but different parameters/signatures,Overriding a parent class method,Deleting unused methods,Running a method multiple times in a loop,A
+What does 'this' keyword generally refer to in an OOP class context?,The parent class always,The current instance of the object,A global variable,The class name as a string,B
+What is a constructor in a class?,A method that destroys an object,A special method automatically called when a new object/instance is created,A static utility function,A CSS style rule,B
+What is the difference between a class and an object?,They are exactly the same thing,A class is a blueprint; an object is an instance created from that blueprint,An object is a blueprint; a class is an instance,Classes only exist in databases,B
+What does 'interface' or 'abstract class' typically enforce in OOP?,That certain methods must be implemented by subclasses,That no methods can be added,That the class cannot be inherited,That all properties become private automatically,A
+What is composition in OOP?,Building complex objects by combining simpler objects rather than through inheritance,Writing CSS compositions,A synonym for inheritance,Deleting unused objects,A
+Why is encapsulation useful in software design?,It slows down execution intentionally,It protects internal object state and reduces unintended interference from outside code,It removes the need for classes,It prevents any code reuse,B
+What is the time complexity of accessing an element in an array by index?,O(n),O(log n),O(1),O(n^2),C
+What is the time complexity of a well-implemented binary search on a sorted array?,O(n),O(log n),O(n log n),O(1),B
+"Which data structure follows the Last In, First Out (LIFO) principle?",Queue,Stack,Array,Linked List,B
+"Which data structure follows the First In, First Out (FIFO) principle?",Stack,Queue,Tree,Graph,B
+What is the average time complexity of searching in a hash table (with good hashing)?,O(n),O(log n),O(1),O(n^2),C
+What is a linked list?,A fixed-size contiguous block of memory,A linear data structure where elements (nodes) point to the next node,A type of database table,A sorting algorithm,B
+Which sorting algorithm has an average time complexity of O(n log n)?,Bubble Sort,Merge Sort,Selection Sort,Insertion Sort,B
+What is the worst-case time complexity of Bubble Sort?,O(n log n),O(n),O(n^2),O(log n),C
+What is a binary tree?,A tree where each node has at most two children,A tree with only leaf nodes,A linear data structure,A sorted array,A
+What is recursion in programming?,A loop that never terminates,A function that calls itself to solve smaller instances of a problem,A way to declare variables,A type of data structure,B
+What does 'Big O notation' describe?,The exact runtime of an algorithm in seconds,The upper bound/growth rate of an algorithm's time or space complexity,The number of lines of code,The memory address of a variable,B
+What is a hash map/dictionary primarily used for?,Storing data in strict sorted order only,"Storing key-value pairs for fast lookup, insertion, and deletion",Only storing numbers,Managing CSS styles,B
+What is the space complexity consideration of an in-place sorting algorithm?,It requires O(n) additional space always,"It uses only a constant amount of extra space, O(1)",It cannot sort large arrays,It always uses recursion,B
+What is a graph data structure primarily used to represent?,A single linear sequence of numbers,"A set of nodes (vertices) connected by edges, representing relationships",A sorted list only,A fixed-size array,B
+Which traversal visits nodes level by level in a tree?,Depth-First Search (DFS),Breadth-First Search (BFS),In-order traversal,Pre-order traversal,B
+What is the purpose of a 'stack' data structure in function calls (call stack)?,To store CSS styles,To keep track of function calls and their local execution context,To store database records,To render the DOM,B
+What does 'divide and conquer' refer to as an algorithmic strategy?,"Breaking a problem into smaller subproblems, solving them independently, and combining results",Running all code in a single function,Avoiding recursion entirely,Sorting only small arrays,A
+What is the time complexity of inserting an element at the beginning of an array (with shifting)?,O(1),O(log n),O(n),O(n^2),C
+Which data structure would you typically use to check if there are duplicate elements efficiently?,Array with linear search,Hash Set,Stack,Queue,B
+What is dynamic programming primarily used to optimize?,Only sorting algorithms,"Problems with overlapping subproblems and optimal substructure, by storing/reusing results",CSS rendering performance,Database indexing,B
+Your React app shows 'Cannot read properties of undefined' when rendering a list before data has loaded. What is the most likely cause and fix?,The CSS is broken; fix by adding more styles,The data is undefined initially; add a loading state/conditional check before rendering,The browser is outdated; update the browser,The API key is invalid; regenerate it,B
+An Express API returns a CORS error when called from your React frontend during development. What is the most appropriate fix?,Disable the frontend entirely,Configure and enable the 'cors' middleware on the backend to allow the frontend's origin,Convert the API to use only GET requests,Rename all API routes,B
+A Git push is rejected with 'failed to push some refs' because the remote has changes you don't have locally. What should you typically do first?,Force push immediately with --force,"Pull/fetch and merge or rebase the remote changes first, then push",Delete the remote repository,Create a brand-new repository,B
+Your MongoDB query using find() is running very slowly on a large collection. What is a common first step to improve performance?,Delete the collection,Add an appropriate index on the queried field(s),Switch to a different programming language,Disable the database connection,B
+A useEffect hook in React is causing an infinite re-render loop. What is the most likely misconfiguration?,Missing or incorrect dependency array causing the effect to run on every render,Using too much CSS,The component has too many props,The API is too slow,A
+An API call using fetch/axios intermittently fails with a timeout. What is a reasonable debugging approach?,Ignore it since it works sometimes,"Check network conditions, add proper error handling/retries, and inspect server response times/logs",Rewrite the entire frontend,Switch to a completely different database,B
+Your SQL query returns duplicate rows unexpectedly after a JOIN. What is a likely cause?,The database is corrupted,"The join condition matches multiple rows on one or both sides, causing a cartesian-like effect",SQL does not support joins,The table has too many columns,B
+A Node.js server crashes with 'UnhandledPromiseRejection' in production. What is the best practice to prevent this?,Ignore promises entirely and use only callbacks,Always handle promise rejections using try/catch with async/await or .catch(),Restart the server manually every time,Remove all async code,B
+You're asked to use an AI coding assistant to speed up debugging a tricky bug. What is the most effective approach?,Blindly accept any AI-suggested code without review,"Use the AI tool to get suggestions, but review, test, and understand the code before applying it",Avoid AI tools completely in all situations,Ask the AI to rewrite the entire codebase from scratch every time,B
+A client reports a bug that you cannot reproduce locally. What is the best next step?,Tell the client it's not a real bug,"Gather more details (steps, environment, logs/screenshots) to reproduce and diagnose the issue",Ignore the report until it happens again,Rewrite the whole feature immediately,B
