@@ -1,5 +1,6 @@
 import { useQuiz } from "@/lib/quiz-store";
 import { cn } from "@/lib/utils";
+import type { Question } from "@/data/questions";
 import { Check, ChevronRight, X } from "lucide-react";
 
 const LETTERS = ["A", "B", "C", "D"] as const;
@@ -13,7 +14,7 @@ export function QuestionView() {
   const next = useQuiz((s) => s.next);
   const records = useQuiz((s) => s.records);
 
-  const q = queue[index];
+  const q = queue[index] as Question;
   if (!q) return null;
 
   const total = queue.length;
@@ -25,9 +26,7 @@ export function QuestionView() {
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6 sm:py-10">
       <div className="flex items-center justify-between gap-3 text-sm">
-        <span className="rounded-full border border-border px-3 py-1 text-muted">
-          {q.topic}
-        </span>
+        <span className="rounded-full border border-border px-3 py-1 text-muted">{q.topic}</span>
         <span className="font-mono tabular-nums text-muted">
           {index + 1} / {total}
           <span className="mx-2 text-border">·</span>
@@ -43,9 +42,7 @@ export function QuestionView() {
       </div>
 
       <div className="flex flex-col gap-4 rounded-xl border border-border bg-surface p-5 sm:p-6">
-        <h2 className="text-lg leading-snug font-medium text-fg sm:text-xl">
-          {q.question}
-        </h2>
+        <h2 className="text-lg leading-snug font-medium text-fg sm:text-xl">{q.question}</h2>
         {q.code ? (
           <pre className="overflow-x-auto rounded-md bg-bg p-4 font-mono text-sm leading-relaxed text-fg">
             <code>{q.code}</code>
@@ -69,8 +66,7 @@ export function QuestionView() {
                 onClick={() => pick(i)}
                 className={cn(
                   "flex min-h-12 items-start gap-3 rounded-lg border px-3 py-3 text-left text-sm leading-snug transition-colors duration-150 sm:text-base",
-                  !revealed &&
-                    "border-border bg-elevated text-fg hover:border-accent/50",
+                  !revealed && "border-border bg-elevated text-fg hover:border-accent/50",
                   showCorrect && "border-correct bg-correct-bg text-fg",
                   showWrong && "border-wrong bg-wrong-bg text-fg",
                   revealed && !showCorrect && !showWrong && "border-border bg-bg text-muted",

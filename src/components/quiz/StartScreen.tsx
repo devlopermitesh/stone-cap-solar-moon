@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { QUESTIONS } from "@/data/questions";
+import { SHORT_QUESTIONS } from "@/data/short-questions";
 import { TOPICS, useQuiz } from "@/lib/quiz-store";
-import { ArrowRight, BookOpen, ListChecks } from "lucide-react";
+import { DsaPractice } from "./DsaPractice";
+import { ArrowRight, Code, ListChecks, MessageSquareQuote } from "lucide-react";
 
 const TOPIC_COUNTS = TOPICS.filter((t) => t !== "all").map((topic) => ({
   topic,
@@ -9,9 +12,15 @@ const TOPIC_COUNTS = TOPICS.filter((t) => t !== "all").map((topic) => ({
 
 export function StartScreen() {
   const start = useQuiz((s) => s.start);
+  const startShort = useQuiz((s) => s.startShort);
+  const [activeView, setActiveView] = useState<"start" | "dsa">("start");
+
+  if (activeView === "dsa") {
+    return <DsaPractice onBack={() => setActiveView("start")} />;
+  }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-10 sm:py-14">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10 sm:py-14">
       <header className="flex flex-col gap-3">
         <p className="text-sm font-medium tracking-wide text-accent uppercase">
           NetTech interview prep
@@ -20,33 +29,34 @@ export function StartScreen() {
           Frontend CBT
         </h1>
         <p className="max-w-xl text-base leading-relaxed text-muted">
-          {QUESTIONS.length} multiple-choice questions. Pick an answer — wrong choices turn red, the
-          correct option turns green. Review every item at the end.
+          {QUESTIONS.length} multiple-choice questions, {SHORT_QUESTIONS.length} short-answer recall
+          questions, and 50 DSA practice problems.
         </p>
       </header>
 
-      <button
-        type="button"
-        onClick={() => start("all")}
-        className="flex min-h-12 items-center justify-between gap-4 rounded-xl bg-fg px-5 py-4 text-left text-accent-fg transition-transform duration-150 hover:opacity-95 active:scale-[0.98]"
-      >
-        <span className="flex items-center gap-3">
-          <ListChecks className="size-5" strokeWidth={1.75} />
-          <span>
-            <span className="block text-base font-semibold">
-              Full test · {QUESTIONS.length} questions
-            </span>
-            <span className="block text-sm opacity-70">All topics, one sitting</span>
-          </span>
-        </span>
-        <ArrowRight className="size-5 shrink-0" />
-      </button>
-
       <section className="flex flex-col gap-3">
         <div className="flex items-center gap-2 text-sm font-medium text-muted">
-          <BookOpen className="size-4" />
-          Practice by topic
+          <ListChecks className="size-4" />
+          MCQ questions
         </div>
+
+        <button
+          type="button"
+          onClick={() => start("all")}
+          className="flex min-h-12 items-center justify-between gap-4 rounded-xl bg-fg px-5 py-4 text-left text-accent-fg transition-transform duration-150 hover:opacity-95 active:scale-[0.98]"
+        >
+          <span className="flex items-center gap-3">
+            <ListChecks className="size-5" strokeWidth={1.75} />
+            <span>
+              <span className="block text-base font-semibold">
+                Full test · {QUESTIONS.length} questions
+              </span>
+              <span className="block text-sm opacity-70">All topics, one sitting</span>
+            </span>
+          </span>
+          <ArrowRight className="size-5 shrink-0" />
+        </button>
+
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {TOPIC_COUNTS.map(({ topic, count }) => (
             <button
@@ -60,6 +70,54 @@ export function StartScreen() {
             </button>
           ))}
         </div>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <div className="flex items-center gap-2 text-sm font-medium text-muted">
+          <MessageSquareQuote className="size-4" />
+          Short answers
+        </div>
+
+        <button
+          type="button"
+          onClick={() => startShort("all")}
+          className="flex min-h-12 items-center justify-between gap-4 rounded-xl border border-border bg-surface px-5 py-4 text-left transition-colors duration-150 hover:bg-elevated active:scale-[0.98]"
+        >
+          <span className="flex items-center gap-3">
+            <MessageSquareQuote className="size-5 shrink-0 text-accent" strokeWidth={1.75} />
+            <span>
+              <span className="block text-base font-medium text-fg">
+                Short answers · {SHORT_QUESTIONS.length} questions
+              </span>
+              <span className="block text-sm text-muted">Read, recall, reveal</span>
+            </span>
+          </span>
+          <ArrowRight className="size-5 shrink-0 text-muted" />
+        </button>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <div className="flex items-center gap-2 text-sm font-medium text-muted">
+          <Code className="size-4" />
+          DSA Practice
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setActiveView("dsa")}
+          className="flex min-h-12 items-center justify-between gap-4 rounded-xl border border-border bg-surface px-5 py-4 text-left transition-colors duration-150 hover:bg-elevated active:scale-[0.98]"
+        >
+          <span className="flex items-center gap-3">
+            <Code className="size-5 shrink-0 text-accent" strokeWidth={1.75} />
+            <span>
+              <span className="block text-base font-medium text-fg">
+                DSA Practice · 50 problems
+              </span>
+              <span className="block text-sm text-muted">5 levels, 30-day prep plan</span>
+            </span>
+          </span>
+          <ArrowRight className="size-5 shrink-0 text-muted" />
+        </button>
       </section>
     </div>
   );
