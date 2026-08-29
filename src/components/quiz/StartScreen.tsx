@@ -2,8 +2,9 @@ import { useState } from "react";
 import { QUESTIONS } from "@/data/questions";
 import { SHORT_QUESTIONS } from "@/data/short-questions";
 import { TOPICS, useQuiz } from "@/lib/quiz-store";
+import { useInterview } from "@/lib/interview-store";
 import { DsaPractice } from "./DsaPractice";
-import { ArrowRight, Code, ListChecks, MessageSquareQuote } from "lucide-react";
+import { ArrowRight, Code, ListChecks, MessageSquareQuote, ChevronLeft } from "lucide-react";
 
 const TOPIC_COUNTS = TOPICS.filter((t) => t !== "all").map((topic) => ({
   topic,
@@ -13,14 +14,30 @@ const TOPIC_COUNTS = TOPICS.filter((t) => t !== "all").map((topic) => ({
 export function StartScreen() {
   const start = useQuiz((s) => s.start);
   const startShort = useQuiz((s) => s.startShort);
+  const reset = useQuiz((s) => s.restart);
+  const goBackToHub = useInterview((s) => s.reset);
   const [activeView, setActiveView] = useState<"start" | "dsa">("start");
 
   if (activeView === "dsa") {
     return <DsaPractice onBack={() => setActiveView("start")} />;
   }
 
+  const backToHub = () => {
+    reset();
+    goBackToHub();
+  };
+
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10 sm:py-14">
+      <button
+        type="button"
+        onClick={backToHub}
+        className="flex w-fit items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-fg"
+      >
+        <ChevronLeft className="size-4" />
+        Back to tracks
+      </button>
+
       <header className="flex flex-col gap-3">
         <p className="text-sm font-medium tracking-wide text-accent uppercase">
           NetTech interview prep
