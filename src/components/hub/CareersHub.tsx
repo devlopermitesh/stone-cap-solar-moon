@@ -14,8 +14,8 @@ const BAGS = [
     id: "smm" as const,
     icon: Rocket,
     title: "Social Media Manager",
-    subtitle: "Short + long answer",
-    count: "Role-based interview",
+    subtitle: "Sweet Country · role interview",
+    count: "114 Q&A · 7 categories",
     accent: false,
   },
   {
