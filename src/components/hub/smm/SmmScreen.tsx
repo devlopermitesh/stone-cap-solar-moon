@@ -10,16 +10,24 @@ const CATEGORIES = [
   ...Array.from(new Set(SMM_QUESTIONS.map((q) => q.category))),
 ] as const;
 
+const KINDS = ["all", "short", "long"] as const;
+
 export function SmmScreen() {
   const back = useInterview((s) => s.back);
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>("all");
+  const [kind, setKind] = useState<(typeof KINDS)[number]>("all");
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [finished, setFinished] = useState(false);
 
   const list = useMemo(
-    () => SMM_QUESTIONS.filter((q) => category === "all" || q.category === category),
-    [category],
+    () =>
+      SMM_QUESTIONS.filter(
+        (q) =>
+          (category === "all" || q.category === category) &&
+          (kind === "all" || q.kind === kind),
+      ),
+    [category, kind],
   );
 
   const q = list[index];
@@ -30,8 +38,9 @@ export function SmmScreen() {
     setFinished(false);
   };
 
-  const resetAll = (c: (typeof CATEGORIES)[number]) => {
+  const setFilters = (c: (typeof CATEGORIES)[number], k: (typeof KINDS)[number]) => {
     setCategory(c);
+    setKind(k);
     setIndex(0);
     setRevealed(false);
     setFinished(false);
@@ -90,17 +99,17 @@ export function SmmScreen() {
       <div className="flex flex-col gap-2">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex gap-1 rounded-lg border border-border p-1">
-            {CATEGORIES.slice(0, 3).map((c) => (
+            {KINDS.map((k) => (
               <button
-                key={c}
+                key={k}
                 type="button"
-                onClick={() => resetAll(c)}
+                onClick={() => setFilters(category, k)}
                 className={cn(
                   "min-h-8 rounded-md px-3 text-xs font-medium capitalize",
-                  category === c ? "bg-elevated text-fg" : "text-muted",
+                  kind === k ? "bg-elevated text-fg" : "text-muted",
                 )}
               >
-                {c === "all" ? "All" : c}
+                {k === "all" ? "All" : k === "short" ? "Short" : "Long"}
               </button>
             ))}
           </div>
@@ -113,7 +122,7 @@ export function SmmScreen() {
             <button
               key={c}
               type="button"
-              onClick={() => resetAll(c)}
+              onClick={() => setFilters(c, kind)}
               className={cn(
                 "shrink-0 rounded-full border px-3 py-1 text-xs font-medium",
                 category === c

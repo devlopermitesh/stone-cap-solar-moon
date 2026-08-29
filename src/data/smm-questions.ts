@@ -15,7 +15,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 1,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Sweet Country ke Instagram pe aajkal engagement low hai. Aap kya content strategy banayenge local Thane-Bhiwandi audience ke liye?",
     hint: "Local festivals, daily cake stories, behind-the-scenes pe focus karo.",
     description: "Yeh scenario-based question hai jisme interviewer dekhna chahta hai ki aap local market samajhte ho aur data-driven content plan bana sakte ho.",
@@ -24,7 +24,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 2,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Diwali aa rahi hai. Sweet County ke liye 15 din ka content calendar kaise banayenge?",
     hint: "Festival themes, gift hampers, limited offers, countdown posts.",
     description: "Festival campaigns local sweet shops ke liye sabse important hote hain. Interviewer yeh dekhna chahta hai ki aap timing, variety aur sales conversion soch sakte ho.",
@@ -33,7 +33,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 3,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Aapko ek custom cake order ka unboxing video banana hai jo viral ho sake. Approach kya hoga?",
     hint: "Emotional storytelling + aesthetic shots + local touch.",
     description: "Viral content ke liye hooks, emotions aur shareability zaroori hai. Cake shop ke liye unboxing bahut powerful hota hai.",
@@ -42,7 +42,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 4,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Sweet County pure veg hai. Isko social media pe kaise highlight karenge competitors se alag dikhane ke liye?",
     hint: "Pure veg badge, ingredients transparency, family-friendly angle.",
     description: "Differentiation bahut important hai crowded market mein. Pure veg ek strong USP hai Mumbai-Thane area mein.",
@@ -51,7 +51,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 5,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Ek nayi mango cake launch ho rahi hai summer mein. Launch campaign kaise plan karoge?",
     hint: "Teaser → Reveal → Offer → UGC → FOMO.",
     description: "Product launch campaigns sales drive karte hain. Structured approach chahiye.",
@@ -60,7 +60,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 6,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Content calendar banate waqt evergreen vs trending content ka balance kaise rakhenge?",
     hint: "70% evergreen, 20% seasonal, 10% trending.",
     description: "Consistent growth ke liye balance zaroori hai. Sirf trends pe depend nahi karna chahiye.",
@@ -69,7 +69,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 7,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Reels ka length aur format Sweet County ke liye kya best rahega?",
     hint: "7-15 seconds hook heavy, vertical, text overlay.",
     description: "Algorithm reels ko priority deta hai. Length aur retention important hai.",
@@ -78,7 +78,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 8,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Carousels kab use karenge aur kaise design karenge?",
     hint: "Education, before-after, multiple products, tips.",
     description: "Carousels save aur share zyada hote hain. Education content ke liye best.",
@@ -87,7 +87,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 9,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Stories ka daily plan kya hoga Sweet County ke liye?",
     hint: "Morning offer, midday BTS, evening poll/customer, night CTA.",
     description: "Stories high engagement dete hain aur algorithm ko signal dete hain ki account active hai.",
@@ -96,7 +96,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 10,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "UGC (User Generated Content) kaise encourage karenge?",
     hint: "Contests, reposts, free cake incentives, branded hashtag.",
     description: "UGC authentic lagta hai aur trust banata hai. Cost-effective bhi hai.",
@@ -105,7 +105,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 11,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Local Thane-Bhiwandi influencers ke saath kaise collab karoge?",
     hint: "Micro-influencers (5k-50k), food focused, barter + paid mix.",
     description: "Local influencers targeted reach dete hain aur authentic feel aata hai.",
@@ -114,7 +114,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 12,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Hashtag strategy kya hogi?",
     hint: "Mix of branded, local, niche, trending.",
     description: "Hashtags discovery ke liye important hain lekin spam nahi karna.",
@@ -123,7 +123,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 13,
     category: "Content Creation & Strategy",
-    kind: "short",
+    kind: "long",
     question: "Caption writing style kya hoga?",
     hint: "Hinglish, friendly, emotional, CTA strong.",
     description: "Local audience Hinglish prefer karti hai. Tone brand personality dikhata hai.",
@@ -195,7 +195,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 21,
     category: "Engagement & Community Management",
-    kind: "short",
+    kind: "long",
     question: "Koi customer negative comment kare 'Cake stale tha' to public mein kaise respond karoge?",
     hint: "Empathy pehle, private resolution, public transparency.",
     description: "Negative comments handle karna crisis management ka basic hai. Public response brand image banata hai.",
@@ -312,7 +312,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 34,
     category: "Engagement & Community Management",
-    kind: "short",
+    kind: "long",
     question: "Crisis: Koi allegiation aaye ki cake mein kuch galat tha. Response protocol?",
     hint: "Pause content, verify facts, official statement, transparency.",
     description: "Food safety crisis serious hai. Calm + fast response chahiye.",
@@ -366,7 +366,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 40,
     category: "Ads, Paid Promotion & Local SEO",
-    kind: "short",
+    kind: "long",
     question: "Retargeting strategy kya hogi?",
     hint: "Website visitors, video viewers, engagers, cart abandoners.",
     description: "Retargeting cheapest conversions deta hai.",
@@ -420,7 +420,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 46,
     category: "Ads, Paid Promotion & Local SEO",
-    kind: "short",
+    kind: "long",
     question: "Cost per message/lead kitna acceptable hoga?",
     hint: "Depends on AOV. Target CPL < 10-15% of average order.",
     description: "Unit economics samajhna zaroori.",
@@ -474,7 +474,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 52,
     category: "Analytics, Reporting & Optimization",
-    kind: "short",
+    kind: "long",
     question: "Instagram Insights se kaunsi 5 cheezein regular check karoge?",
     hint: "Audience active times, top content, reach sources, demographics, interactions.",
     description: "Data-driven decisions ke liye regular check zaroori.",
@@ -492,7 +492,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 54,
     category: "Analytics, Reporting & Optimization",
-    kind: "short",
+    kind: "long",
     question: "Agar reach drop ho jaye to diagnosis process kya hoga?",
     hint: "Check algorithm changes, content quality, posting consistency, competition.",
     description: "Reach drops common hain, panic mat karo.",
@@ -555,7 +555,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 61,
     category: "Analytics, Reporting & Optimization",
-    kind: "short",
+    kind: "long",
     question: "Monthly goals kaise set karoge SMART way mein?",
     hint: "Specific, Measurable, Achievable, Relevant, Time-bound.",
     description: "Vague goals fail hote hain.",
@@ -600,7 +600,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 66,
     category: "Crisis, Trends, Local & Operations",
-    kind: "short",
+    kind: "long",
     question: "Koi viral negative video aaye cake ke against. First 1 hour mein kya karoge?",
     hint: "Assess, pause, gather facts, draft response, escalate.",
     description: "Speed + calm zaroori hai viral crisis mein.",
@@ -726,7 +726,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 80,
     category: "Crisis, Trends, Local & Operations",
-    kind: "short",
+    kind: "long",
     question: "Success ke 3 main KPIs kya define karoge is role ke liye?",
     hint: "Inquiry volume, engagement rate, content consistency.",
     description: "Clear KPIs performance measure karte hain.",
@@ -861,7 +861,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 95,
     category: "Tools, Practical Skills & Deep Scenarios",
-    kind: "short",
+    kind: "long",
     question: "Annual content themes/calendar ka overview?",
     hint: "Festivals, seasons, evergreens, product launches, local events.",
     description: "Big picture planning.",
@@ -996,7 +996,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 110,
     category: "Advanced Practical Scenarios",
-    kind: "short",
+    kind: "long",
     question: "End of month reporting meeting mein kya slides/structure?",
     hint: "Summary, wins, metrics, learnings, next plan, asks.",
     description: "Clear communication stakeholders ke saath.",
@@ -1032,7 +1032,7 @@ export const SMM_QUESTIONS: SmmQuestion[] = [
   {
     id: 114,
     category: "Advanced Practical Scenarios",
-    kind: "short",
+    kind: "long",
     question: "Last question: Is role mein 1 saal baad success kaisa dikhega aapke liye?",
     hint: "Business impact + community + process + personal growth.",
     description: "Vision align check.",
