@@ -1,11 +1,11 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { QUESTIONS } from "@/data/questions";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "NetTech Frontend CBT";
-const DESCRIPTION = `${QUESTIONS.length}-question NetTech-style frontend CBT quiz covering HTML, CSS, JavaScript, React, Node, APIs, Git, and more.`;
+const APP_NAME = "NetTech Interview Prep";
+const DESCRIPTION =
+  "Interview prep hub: Fullstack CBT, Social Media Manager Q&A, and a full DSA roadmap with calendar, video playlists, reminders, and timed problems.";
 
 export const Route = createRootRoute({
   head: () => ({
