@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type BagId = "fullstack" | "smm" | "dsa" | null;
+export type BagId = "fullstack" | "smm" | "dsa" | "english" | null;
 export type DsaScreen =
   | "home"
   | "calendar"
@@ -10,15 +10,24 @@ export type DsaScreen =
   | "playlist"
   | "video"
   | null;
+export type EnglishScreen =
+  | "home"
+  | "calendar"
+  | "today"
+  | "playlist"
+  | "video"
+  | null;
 
 type HubState = {
   activeBag: BagId;
   dsaScreen: DsaScreen;
+  englishScreen: EnglishScreen;
   selectedDay: number | null;
   selectedTopic: string | undefined;
   open: (bag: Exclude<BagId, null>) => void;
   back: () => void;
   setDsaScreen: (screen: DsaScreen) => void;
+  setEnglishScreen: (screen: EnglishScreen) => void;
   setSelectedDay: (day: number | null) => void;
   setSelectedTopic: (topic: string | undefined) => void;
   reset: () => void;
@@ -27,17 +36,20 @@ type HubState = {
 export const useInterview = create<HubState>((set, get) => ({
   activeBag: null,
   dsaScreen: null,
+  englishScreen: null,
   selectedDay: null,
   selectedTopic: undefined,
   open: (bag) => {
     if (bag === "dsa") {
-      set({ activeBag: bag, dsaScreen: "home", selectedDay: null, selectedTopic: undefined });
+      set({ activeBag: bag, dsaScreen: "home", englishScreen: null, selectedDay: null, selectedTopic: undefined });
+    } else if (bag === "english") {
+      set({ activeBag: bag, englishScreen: "home", dsaScreen: null, selectedDay: null, selectedTopic: undefined });
     } else {
-      set({ activeBag: bag, dsaScreen: null });
+      set({ activeBag: bag, dsaScreen: null, englishScreen: null });
     }
   },
   back: () => {
-    const { dsaScreen, activeBag } = get();
+    const { dsaScreen, englishScreen, activeBag } = get();
     if (activeBag === "dsa") {
       if (dsaScreen === "video") set({ dsaScreen: "playlist" });
       else if (dsaScreen === "today" && get().selectedTopic) {
@@ -46,14 +58,20 @@ export const useInterview = create<HubState>((set, get) => ({
       else if (dsaScreen === "playlist") set({ dsaScreen: "today" });
       else if (dsaScreen === "problems") set({ dsaScreen: "today" });
       else set({ activeBag: null, dsaScreen: null, selectedTopic: undefined });
+    } else if (activeBag === "english") {
+      if (englishScreen === "video") set({ englishScreen: "playlist" });
+      else if (englishScreen === "today") set({ englishScreen: "calendar" });
+      else if (englishScreen === "playlist") set({ englishScreen: "today" });
+      else set({ activeBag: null, englishScreen: null, selectedTopic: undefined });
     } else {
-      set({ activeBag: null, dsaScreen: null });
+      set({ activeBag: null, dsaScreen: null, englishScreen: null });
     }
   },
   setDsaScreen: (screen) => set({ dsaScreen: screen }),
+  setEnglishScreen: (screen) => set({ englishScreen: screen }),
   setSelectedDay: (day) => set({ selectedDay: day }),
   setSelectedTopic: (topic) => set({ selectedTopic: topic }),
-  reset: () => set({ activeBag: null, dsaScreen: null, selectedDay: null, selectedTopic: undefined }),
+  reset: () => set({ activeBag: null, dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined }),
 }));
 
 export type Reminder = {

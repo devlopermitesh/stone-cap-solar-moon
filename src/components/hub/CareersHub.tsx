@@ -1,5 +1,5 @@
 import { useInterview } from "@/lib/interview-store";
-import { LayoutGrid, Code2, Rocket, GraduationCap, ChevronRight } from "lucide-react";
+import { LayoutGrid, Code2, Rocket, GraduationCap, Languages, ChevronRight } from "lucide-react";
 
 const BAGS = [
   {
@@ -24,6 +24,14 @@ const BAGS = [
     title: "DSA Roadmap",
     subtitle: "Calendar · videos · problems",
     count: "500-problem tracker",
+    accent: false,
+  },
+  {
+    id: "english" as const,
+    icon: Languages,
+    title: "English Fluency",
+    subtitle: "Calendar · daily goal · playlists",
+    count: "12-week watch path",
     accent: false,
   },
 ];
@@ -82,7 +90,8 @@ export function CareersHub() {
 
       <p className="text-center text-xs text-subtle">
         Fullstack routes to the existing CBT test · Social Media Manager is a new
-        Q&amp;A flow · DSA opens a full roadmap with calendar, videos, and problems.
+        Q&amp;A flow · DSA opens a roadmap with calendar, videos, and problems ·
+        English Fluency is a watch-based calendar with a daily goal.
       </p>
     </div>
   );
