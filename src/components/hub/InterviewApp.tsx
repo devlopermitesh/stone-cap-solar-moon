@@ -3,6 +3,7 @@ import { useQuiz } from "@/lib/quiz-store";
 import { CareersHub } from "./CareersHub";
 import { SmmScreen } from "./smm/SmmScreen";
 import { DsaApp } from "./dsa/DsaApp";
+import { EnglishApp } from "./english/EnglishApp";
 import { QuestionView } from "@/components/quiz/QuestionView";
 import { ResultsScreen } from "@/components/quiz/ResultsScreen";
 import { ShortQuestionView } from "@/components/quiz/ShortQuestionView";
@@ -15,6 +16,7 @@ export function InterviewApp() {
 
   if (activeBag === "smm") return <SmmScreen />;
   if (activeBag === "dsa") return <DsaApp />;
+  if (activeBag === "english") return <EnglishApp />;
 
   return (
     <main className="min-h-dvh bg-bg text-fg">
