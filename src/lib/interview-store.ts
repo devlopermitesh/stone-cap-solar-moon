@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type BagId = "fullstack" | "smm" | "dsa" | "english" | null;
+export type BagId = "fullstack" | "smm" | "dsa" | "english" | "planner" | null;
 export type DsaScreen =
   | "home"
   | "calendar"
@@ -17,17 +17,20 @@ export type EnglishScreen =
   | "playlist"
   | "video"
   | null;
+export type PlannerScreen = "home" | "day" | "calendar" | "goals" | "feedback";
 
 type HubState = {
   activeBag: BagId;
   dsaScreen: DsaScreen;
   englishScreen: EnglishScreen;
+  plannerScreen: PlannerScreen;
   selectedDay: number | null;
   selectedTopic: string | undefined;
   open: (bag: Exclude<BagId, null>) => void;
   back: () => void;
   setDsaScreen: (screen: DsaScreen) => void;
   setEnglishScreen: (screen: EnglishScreen) => void;
+  setPlannerScreen: (screen: PlannerScreen) => void;
   setSelectedDay: (day: number | null) => void;
   setSelectedTopic: (topic: string | undefined) => void;
   reset: () => void;
@@ -37,6 +40,7 @@ export const useInterview = create<HubState>((set, get) => ({
   activeBag: null,
   dsaScreen: null,
   englishScreen: null,
+  plannerScreen: "home",
   selectedDay: null,
   selectedTopic: undefined,
   open: (bag) => {
@@ -44,12 +48,14 @@ export const useInterview = create<HubState>((set, get) => ({
       set({ activeBag: bag, dsaScreen: "home", englishScreen: null, selectedDay: null, selectedTopic: undefined });
     } else if (bag === "english") {
       set({ activeBag: bag, englishScreen: "home", dsaScreen: null, selectedDay: null, selectedTopic: undefined });
+    } else if (bag === "planner") {
+      set({ activeBag: bag, plannerScreen: "home", dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined });
     } else {
       set({ activeBag: bag, dsaScreen: null, englishScreen: null });
     }
   },
   back: () => {
-    const { dsaScreen, englishScreen, activeBag } = get();
+    const { dsaScreen, englishScreen, plannerScreen, activeBag } = get();
     if (activeBag === "dsa") {
       if (dsaScreen === "video") set({ dsaScreen: "playlist" });
       else if (dsaScreen === "today" && get().selectedTopic) {
@@ -63,12 +69,16 @@ export const useInterview = create<HubState>((set, get) => ({
       else if (englishScreen === "today") set({ englishScreen: "calendar" });
       else if (englishScreen === "playlist") set({ englishScreen: "today" });
       else set({ activeBag: null, englishScreen: null, selectedTopic: undefined });
+    } else if (activeBag === "planner") {
+      if (plannerScreen !== "home") set({ plannerScreen: "home" });
+      else set({ activeBag: null, plannerScreen: "home", selectedDay: null, selectedTopic: undefined });
     } else {
       set({ activeBag: null, dsaScreen: null, englishScreen: null });
     }
   },
   setDsaScreen: (screen) => set({ dsaScreen: screen }),
   setEnglishScreen: (screen) => set({ englishScreen: screen }),
+  setPlannerScreen: (screen) => set({ plannerScreen: screen }),
   setSelectedDay: (day) => set({ selectedDay: day }),
   setSelectedTopic: (topic) => set({ selectedTopic: topic }),
   reset: () => set({ activeBag: null, dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined }),
