@@ -1,5 +1,13 @@
 import { useInterview } from "@/lib/interview-store";
-import { LayoutGrid, Code2, Rocket, GraduationCap, Languages, ChevronRight } from "lucide-react";
+import {
+  LayoutGrid,
+  Code2,
+  Rocket,
+  GraduationCap,
+  Languages,
+  CalendarCheck,
+  ChevronRight,
+} from "lucide-react";
 
 const BAGS = [
   {
@@ -32,6 +40,14 @@ const BAGS = [
     title: "English Fluency",
     subtitle: "Calendar · daily goal · playlists",
     count: "12-week watch path",
+    accent: false,
+  },
+  {
+    id: "planner" as const,
+    icon: CalendarCheck,
+    title: "Day Planner",
+    subtitle: "Goals → plan → act → learn",
+    count: "Engine-planned days",
     accent: false,
   },
 ];
@@ -91,7 +107,8 @@ export function CareersHub() {
       <p className="text-center text-xs text-subtle">
         Fullstack routes to the existing CBT test · Social Media Manager is a new
         Q&amp;A flow · DSA opens a roadmap with calendar, videos, and problems ·
-        English Fluency is a watch-based calendar with a daily goal.
+        English Fluency is a watch-based calendar with a daily goal · Day Planner
+        turns all of it into an engine-planned day with a next-action card.
       </p>
     </div>
   );

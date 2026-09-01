@@ -35,7 +35,11 @@ export function parseSmokeArgs(argv, env = {}) {
   }
   return {
     url: positional[0] || "http://127.0.0.1:8080/",
-    outPng: positional[1] || "/workspace/screenshots/app-builder-preview.png",
+    outPng:
+      positional[1] ||
+      (env.BROWSER_SMOKE_OUT_DIR
+        ? `${env.BROWSER_SMOKE_OUT_DIR}/screenshots/app-builder-preview.png`
+        : "/workspace/screenshots/app-builder-preview.png"),
     baseline,
   };
 }
