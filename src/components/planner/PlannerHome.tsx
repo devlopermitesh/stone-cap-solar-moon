@@ -1,8 +1,9 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useInterview } from "@/lib/interview-store";
 import { usePlanner } from "@/lib/planner/state";
 import { dateIso, nowTime } from "@/lib/planner/engine";
 import {
+  Cable,
   CalendarDays,
   CalendarPlus,
   CheckCircle2,
@@ -12,6 +13,7 @@ import {
   Sparkles,
   Target,
   Timer,
+  WifiOff,
 } from "lucide-react";
 import { HubBackButton } from "../hub/HubBackButton";
 import { BlockRow, NavCard, StatCard, goalById } from "./PlannerShared";
@@ -29,6 +31,11 @@ export function PlannerHome() {
   const aiWhy = usePlanner((s) => s.aiWhy);
   const dispatch = usePlanner((s) => s.dispatch);
   const selectBlock = usePlanner((s) => s.selectBlock);
+  const remoteUrl = usePlanner((s) => s.remoteUrl);
+  const remote = usePlanner((s) => s.remote);
+  const setRemote = usePlanner((s) => s.setRemote);
+  const [urlDraft, setUrlDraft] = useState(remoteUrl);
+  const [testing, setTesting] = useState(false);
 
   const today = dateIso();
   const plan = engine?.plans[today];
@@ -213,8 +220,91 @@ export function PlannerHome() {
         />
       </div>
 
+      <ConnectionPanel
+        remote={remote}
+        remoteUrl={remoteUrl}
+        urlDraft={urlDraft}
+        testing={testing}
+        setUrlDraft={setUrlDraft}
+        setTesting={setTesting}
+        setRemote={setRemote}
+      />
+
       {engine ? <EngineFoot engVersion={engine.version} /> : null}
     </div>
+  );
+}
+
+function ConnectionPanel({
+  remote,
+  remoteUrl,
+  urlDraft,
+  testing,
+  setUrlDraft,
+  setTesting,
+  setRemote,
+}: {
+  remote: boolean;
+  remoteUrl: string;
+  urlDraft: string;
+  testing: boolean;
+  setUrlDraft: (v: string) => void;
+  setTesting: (v: boolean) => void;
+  setRemote: (url: string) => Promise<boolean>;
+}) {
+  const [saved, setSaved] = useState(false);
+
+  async function connect() {
+    setTesting(true);
+    setSaved(false);
+    const ok = await setRemote(urlDraft.trim() ? urlDraft.trim() : "");
+    setTesting(false);
+    if (ok) setSaved(true);
+  }
+
+  return (
+    <section className="rounded-xl border border-border bg-surface p-4">
+      <div className="flex items-center gap-2 text-xs font-semibold tracking-wide text-muted uppercase">
+        <Cable className="size-4 text-accent" />
+        Phone engine connection
+      </div>
+      <p className="mt-2 text-sm text-muted">
+        {remote ? (
+          <span className="inline-flex items-center gap-1.5 text-correct">
+            <Circle className="size-2.5" /> Connected to engine
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1.5">
+            <WifiOff className="size-3.5" /> Using the on-device engine
+          </span>
+        )}
+      </p>
+      <p className="mt-1 text-xs text-subtle">
+        Paste the phone engine URL, e.g. <span className="font-mono">http://192.168.0.100:8787</span> — the phone
+        then becomes the single source of truth for your plan.
+      </p>
+      {remoteUrl && !remote ? (
+        <p className="mt-1 text-xs text-wrong">Saved URL not reachable right now — using local engine.</p>
+      ) : null}
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+        <input
+          type="text"
+          value={urlDraft}
+          onChange={(e) => setUrlDraft(e.target.value)}
+          placeholder="http://192.168.0.100:8787"
+          className="min-h-10 flex-1 rounded-lg border border-border bg-bg px-3 font-mono text-sm text-fg outline-none placeholder:text-subtle focus:border-accent"
+        />
+        <button
+          type="button"
+          onClick={connect}
+          disabled={testing}
+          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-accent bg-accent px-4 text-sm font-semibold text-accent-fg transition-colors hover:brightness-110 disabled:opacity-60"
+        >
+          <Cable className="size-4" />
+          {testing ? "Testing…" : saved ? "Connected" : remoteUrl ? "Reconnect" : "Connect"}
+        </button>
+      </div>
+    </section>
   );
 }
 

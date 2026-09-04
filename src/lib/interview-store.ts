@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type BagId = "fullstack" | "smm" | "dsa" | "english" | "planner" | null;
+export type BagId = "fullstack" | "smm" | "dsa" | "english" | "planner" | "instagram" | null;
 export type DsaScreen =
   | "home"
   | "calendar"

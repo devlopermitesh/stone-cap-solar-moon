@@ -21,7 +21,7 @@ const bundle = await rolldown({
   target: "node22",
   format: "esm",
   bundle: true,
-  external: ["node:http", "node:fs", "node:path"],
+  external: ["node:http", "node:fs", "node:path", "node:sqlite"],
   minify: false,
 });
 

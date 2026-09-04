@@ -38,22 +38,27 @@ cd "$HOME/planner/termux"
 # 1) (optional) local LLM — auto-decides, will DISABLE on low-RAM / 32-bit boxes
 bash llama-setup.sh
 
-# 2) secrets — put the rotated Gemini key here if you want the AI quick-add
-cp planner.env.example planner.env
-nano planner.env               # fill GEMINI_API_KEY (optional)
+# 2) secrets — fill the Gemini key if you want richer AI quick-add (optional)
+cp planner.env.example planner.env   # GEMINI_API_KEY is optional; engine works without it
 
 # 3) keep the phone awake + run the engine
 termux-wake-lock
 node planner-engine.mjs
 ```
 
-The engine prints a status line with the day's blocks and serves:
+The engine prints a status line and serves. Persistence is **SQLite**
+(`planner.db`, Node's built-in `node:sqlite`, no install) with a `state.json`
+fallback. On startup it recovers missed blocks (past-end, not started → marked
+`carried`, folded back in on replan).
 
 ```
-GET  /api/planner/state      current EngineState
-POST /api/planner/replan     { events: [...] }  → folds events, persists, returns plan
-POST /api/planner/feedback   { attempt: {...} } → records TaskAttempt, updates behavior
-POST /api/planner/intake     { text: 'review notes 40min P1' } → mini-parser add
+GET  /api/planner/state   full EngineState
+GET  /api/today           today's plan + now
+GET  /api/week            next 7 days
+POST /api/tasks           { text: 'review notes 40min P1' } → add task(s)
+POST /api/events          { events: [...] } → fold EngineEvents, persists
+POST /api/feedback        { attempt: {...} } → record TaskAttempt, update behavior
+GET  /api/events          recent event log
 ```
 
 Try it from the phone browser: `http://127.0.0.1:8787/`.
@@ -87,13 +92,23 @@ Re-run it anytime (e.g. after more RAM frees up) — it self-upgrades.
 
 ## Web ↦ phone wiring
 
-The web app's Gemini consultant runs on the deployed app. To point the web
-"Day Planner" at the phone engine (canonical state.json on-device):
+The web app's Day Planner can treat the phone engine as the **single source of
+truth** over REST. In the planner's **"Phone engine connection"** panel, paste
+the URL; the app fetches the phone's plan on load and POSTs actions back. If
+the phone is unreachable it falls back to the on-device deterministic engine,
+so the web app never goes blank.
 
-- **Same Wi-Fi:** set the engine's `HOST=0.0.0.0` and give the web app the
-  phone's LAN URL `http://192.168.0.100:8787`.
-- **Over internet:** a reverse tunnel (e.g. termux `cloudflared tunnel`) to
-  `https://<tunnel>/api/planner/...`.
+Architecture: **the deterministic engine is always authoritative.** AI (Gemini
+as PRINCIPAL) only ever *proposes* whitelisted tool calls (`add_goal`,
+`set_priority`, `set_weekly_target`, `schedule_now`) which the engine validates
+and executes — an LLM never writes the schedule directly. Quick actions
+(START/complete/quick-add) never wait on the cloud; Gemini refinement runs in
+the background with graceful failure.
 
-Day one goal: confirm the engine runs on-device via `http://127.0.0.1:8787/`.
-Wiring the deployed UI to it is the next step.
+- **Same Wi-Fi:** engine binds `HOST=0.0.0.0`; give the web app the phone's LAN
+  URL `http://192.168.0.100:8787`.
+- **Over internet (Phase 2):** a reverse tunnel (e.g. `cloudflared tunnel`) so
+  the deployed HTTPS web app can reach the phone.
+
+Day one goal: confirm the engine runs on-device via `http://127.0.0.1:8787/`
+and that `GET /api/today` returns your day.
