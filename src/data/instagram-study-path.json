@@ -1,0 +1,108 @@
+{
+  "title": "Instagram Growth: Build a Repeatable Content System",
+  "description": "A 10-week practical path for building audience trust, creating useful content, and using analytics to improve. It teaches durable marketing principles rather than chasing individual algorithm tricks.",
+  "studyRhythm": {
+    "sessionsPerWeek": 4,
+    "sessionFormat": [
+      "Study one lesson and write three takeaways (45 min).",
+      "Analyze five posts from accounts serving your intended audience (30 min).",
+      "Create, publish, or improve one real content asset (60–90 min).",
+      "Review metrics and choose one experiment for next week (30 min)."
+    ]
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "topic": "Audience, niche, and positioning",
+      "learnTogether": ["ideal follower", "problem solved", "content pillars", "profile promise"],
+      "outcome": "Define who the account helps, what change it offers, and why someone should follow.",
+      "practice": "Write a one-sentence positioning statement, choose 3–5 content pillars, and rewrite the bio.",
+      "resources": ["Marketing Fundas", "Brock Johnson"]
+    },
+    {
+      "week": 2,
+      "topic": "Profile foundations and conversion",
+      "learnTogether": ["name field keywords", "bio", "profile image", "link destination", "pinned posts"],
+      "outcome": "Make a first-time visitor understand the account and its next action in seconds.",
+      "practice": "Create three pinned posts: start here, proof/value, and strongest offer or resource.",
+      "resources": ["Marketing Fundas", "Krrish Inkhiya"]
+    },
+    {
+      "week": 3,
+      "topic": "Content strategy and planning",
+      "learnTogether": ["educational, relatable, authority, and conversion content", "content calendar", "series design", "repurposing"],
+      "outcome": "Build a sustainable weekly plan instead of posting disconnected ideas.",
+      "practice": "Plan two weeks of posts with a clear purpose for every item.",
+      "resources": ["Sorav Jain", "Gautham"]
+    },
+    {
+      "week": 4,
+      "topic": "Hooks, scripting, and captions",
+      "learnTogether": ["first-second hook", "open loops", "one clear idea", "call to action", "search-friendly language"],
+      "outcome": "Write scripts that earn attention and captions that make the next step clear.",
+      "practice": "Write 15 hooks for one pillar, then film three 20–40 second versions of the best idea.",
+      "resources": ["Alex Cattoni", "heyDominik"]
+    },
+    {
+      "week": 5,
+      "topic": "Reels production and editing",
+      "learnTogether": ["shot planning", "pacing", "text on screen", "B-roll", "audio", "retention edits"],
+      "outcome": "Produce a short video that is understandable with sound off and compelling with sound on.",
+      "practice": "Edit one Reel in two cuts: a concise version and a story-led version; compare retention.",
+      "resources": ["Raj Photo Editing", "Farhat Wani"]
+    },
+    {
+      "week": 6,
+      "topic": "Carousels, Stories, and community",
+      "learnTogether": ["carousel narrative", "Story interaction", "DM conversations", "comments", "trust building"],
+      "outcome": "Use formats intentionally: Reels for reach, carousels for saves, Stories for relationships.",
+      "practice": "Publish one carousel and run a three-frame Story sequence with a poll or question.",
+      "resources": ["Brock Johnson", "Build Your Tribe"]
+    },
+    {
+      "week": 7,
+      "topic": "Discovery and distribution",
+      "learnTogether": ["search intent", "keywords", "hashtags as context", "collaborations", "shareability"],
+      "outcome": "Increase the chance that useful content reaches the right people beyond existing followers.",
+      "practice": "Create one collaboration pitch and revise five captions around audience search language.",
+      "resources": ["heyDominik", "Sorav Jain"]
+    },
+    {
+      "week": 8,
+      "topic": "Analytics and experiments",
+      "learnTogether": ["reach", "watch time", "retention", "saves", "shares", "profile visits", "follows per reach"],
+      "outcome": "Diagnose content from evidence rather than a single vanity metric.",
+      "practice": "Review the last 10 posts, identify the strongest signal, and run one controlled hook or format experiment.",
+      "resources": ["Brock Johnson", "Dheeraj Mehra"]
+    },
+    {
+      "week": 9,
+      "topic": "Offers, trust, and ethical monetization",
+      "learnTogether": ["value ladder", "lead magnet", "social proof", "disclosure", "conversion content"],
+      "outcome": "Connect content to a helpful next step without making every post a sales pitch.",
+      "practice": "Create one free resource or service offer and one post that clearly explains who it is for.",
+      "resources": ["Alex Cattoni", "Build Your Tribe"]
+    },
+    {
+      "week": 10,
+      "topic": "Paid promotion and integrated campaign",
+      "learnTogether": ["organic validation", "campaign objective", "creative testing", "audience targeting", "budget guardrails"],
+      "outcome": "Know when paid promotion can amplify a proven message and when it cannot fix weak content.",
+      "practice": "Build a 30-day campaign: objective, four content themes, success metrics, and a small test plan.",
+      "resources": ["Piyush Sachdeva", "Marketing Fundas"]
+    }
+  ],
+  "weeklyScorecard": [
+    "Did I publish content that directly serves one content pillar?",
+    "What did people save, share, reply to, or ask about?",
+    "Which hook or first frame held attention best?",
+    "What one variable will I change next week?"
+  ],
+  "avoid": [
+    "Buying followers or engagement; it damages audience quality and makes metrics misleading.",
+    "Copying trends without adapting them to a specific audience problem.",
+    "Changing niche, posting style, and CTA at the same time, which makes results impossible to learn from.",
+    "Treating short-term reach as more important than trust and consistent value."
+  ]
+}
+
