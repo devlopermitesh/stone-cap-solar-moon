@@ -3,6 +3,7 @@ export const GOAL_SOURCES = [
   "english",
   "smm",
   "fullstack",
+  "instagram",
   "custom",
 ] as const;
 

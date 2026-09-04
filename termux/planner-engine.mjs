@@ -536,61 +536,182 @@ function recomputeNext(engine, date) {
 //#region src/lib/planner/termux-entry.ts
 /**
 * Termux engine entry — deterministic Planner Engine as a self-contained Node
-* service. Single source of state.json, implements the REST contract in
-* `contract.ts`. Bundled to `termux/planner-engine.mjs` (no npm install needed
-* on the phone).
+* service. Single source of truth, backed by SQLite (Node built-in `node:sqlite`,
+* with a state.json fallback for older Node). Bundled to `termux/planner-engine.mjs`
+* (no npm install needed on the phone).
+*
+* Architecture (per Smart Day Planner spec):
+*   Stone* web app  ──REST──▶  Termux Planner Service  ──▶  Planner Engine (authoritative)
+*                                                              │
+*                                                              ▼
+*                                                           SQLite (memory)
+*
+* The LLM never controls the schedule — the deterministic engine decides.
 */
 const HOST = process.env.HOST ?? "0.0.0.0";
 const PORT = Number(process.env.PORT ?? 8787);
 const STATE_FILE = resolve(process.env.STATE_FILE ?? "state.json");
-function loadStore() {
-	try {
-		if (existsSync(STATE_FILE)) {
-			const raw = JSON.parse(readFileSync(STATE_FILE, "utf8"));
-			if (raw && Array.isArray(raw.goals) && typeof raw.version === "number") return { engine: raw };
-		}
+const DB_FILE = resolve(process.env.DB_FILE ?? "planner.db");
+let sqliteAvailable = true;
+function dbRun(dbHandle, sql, ...params) {
+	if (dbHandle) try {
+		dbHandle.prepare(sql).run(...params);
 	} catch {}
-	const engine = rebuildPlan(emptyState(defaultGoals()));
-	persist({ engine });
-	return { engine };
 }
-function persist(store) {
-	const tmp = `${STATE_FILE}.tmp`;
-	writeFileSync(tmp, JSON.stringify(store.engine, null, 2), "utf8");
+function dbGetRow(dbHandle, sql) {
+	if (!dbHandle) return void 0;
 	try {
-		renameSync(tmp, STATE_FILE);
+		return dbHandle.prepare(sql).get();
 	} catch {
-		writeFileSync(STATE_FILE, JSON.stringify(store.engine, null, 2), "utf8");
+		return;
 	}
 }
+let DatabaseSync;
+try {
+	DatabaseSync = (await import("node:sqlite")).DatabaseSync;
+} catch {
+	sqliteAvailable = false;
+}
+function openDb() {
+	if (!DatabaseSync) {
+		console.error("[planner] node:sqlite unavailable — using state.json.");
+		sqliteAvailable = false;
+		return null;
+	}
+	try {
+		const handle = new DatabaseSync(DB_FILE);
+		handle.exec("CREATE TABLE IF NOT EXISTS app_meta(key TEXT PRIMARY KEY, value TEXT)");
+		handle.exec("CREATE TABLE IF NOT EXISTS engine_state(id INTEGER PRIMARY KEY CHECK(id=1), json TEXT)");
+		handle.exec("CREATE TABLE IF NOT EXISTS events(id INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT, payload TEXT)");
+		handle.exec("CREATE TABLE IF NOT EXISTS task_attempts(id INTEGER PRIMARY KEY AUTOINCREMENT, block_id TEXT, date TEXT, payload TEXT)");
+		return handle;
+	} catch (e) {
+		sqliteAvailable = false;
+		console.error("[planner] SQLite unavailable, falling back to state.json:", e instanceof Error ? e.message : e);
+		return null;
+	}
+}
+function dbLoadEngine(dbHandle) {
+	const row = dbGetRow(dbHandle, "SELECT json FROM engine_state WHERE id = 1");
+	if (!row) return null;
+	try {
+		const raw = row.json ? JSON.parse(String(row.json)) : null;
+		if (raw && Array.isArray(raw.goals) && typeof raw.version === "number") return raw;
+	} catch {}
+	return null;
+}
+function dbSaveEngine(dbHandle, engine) {
+	dbRun(dbHandle, "INSERT INTO engine_state(id, json) VALUES(1, ?) ON CONFLICT(id) DO UPDATE SET json = excluded.json", JSON.stringify(engine));
+}
+function loadStore() {
+	const dbHandle = openDb();
+	let engine = dbLoadEngine(dbHandle);
+	if (!engine) try {
+		if (existsSync(STATE_FILE)) {
+			const raw = JSON.parse(readFileSync(STATE_FILE, "utf8"));
+			if (raw && Array.isArray(raw.goals) && typeof raw.version === "number") engine = raw;
+		}
+	} catch {
+		engine = null;
+	}
+	if (!engine) engine = rebuildPlan(emptyState(defaultGoals()));
+	const recovered = recoverMissed(engine);
+	persist({
+		engine: recovered,
+		db: dbHandle
+	});
+	return {
+		engine: recovered,
+		db: dbHandle
+	};
+}
+function persist(store) {
+	dbSaveEngine(store.db, store.engine);
+	const tmp = `${STATE_FILE}.tmp`;
+	try {
+		writeFileSync(tmp, JSON.stringify(store.engine, null, 2), "utf8");
+		renameSync(tmp, STATE_FILE);
+	} catch {}
+}
 const store = loadStore();
+function recoverMissed(engine) {
+	const today = dateIso();
+	const plan = engine.plans[today];
+	if (!plan || plan.blocks.length === 0) return engine;
+	const now = /* @__PURE__ */ new Date();
+	const nowMin = now.getHours() * 60 + now.getMinutes();
+	let changed = false;
+	const blocks = plan.blocks.map((b) => {
+		if (b.status === "planned" || b.status === "active") {
+			const [h, m] = (b.end ?? "23:59").split(":").map(Number);
+			if (h * 60 + m < nowMin) {
+				changed = true;
+				return {
+					...b,
+					status: "carried",
+					why: `${b.why ?? ""} · missed, recover on replan`.trim()
+				};
+			}
+		}
+		return b;
+	});
+	if (!changed) return engine;
+	return {
+		...engine,
+		plans: {
+			...engine.plans,
+			[today]: {
+				...plan,
+				blocks
+			}
+		}
+	};
+}
 function fold(events) {
 	store.engine = applyEvents(store.engine, events);
 	persist(store);
 	return store.engine;
 }
+const eventLog = [];
+function logEvent(payload) {
+	const at = (/* @__PURE__ */ new Date()).toISOString();
+	dbRun(store.db, "INSERT INTO events(at, payload) VALUES(?, ?)", at, JSON.stringify(payload));
+	eventLog.push({
+		at,
+		payload
+	});
+}
 function recordAttempt(attempt) {
 	const date = attempt.date ?? dateIso();
 	const block = store.engine.plans[date]?.blocks.find((b) => b.id === attempt.blockId);
 	const at = (/* @__PURE__ */ new Date()).toISOString();
-	if (block) return fold([{
-		type: "task_completed",
-		blockId: block.id,
-		actualMinutes: attempt.actualMinutes,
-		at,
-		feedback: {
-			energy: attempt.energy,
-			difficulty: attempt.difficulty,
-			focus: attempt.focus,
-			note: attempt.note
-		}
-	}]);
-	return store.engine;
+	let result = store.engine;
+	if (block) {
+		result = fold([{
+			type: "task_completed",
+			blockId: block.id,
+			actualMinutes: attempt.actualMinutes,
+			at,
+			feedback: {
+				energy: attempt.energy,
+				difficulty: attempt.difficulty,
+				focus: attempt.focus,
+				note: attempt.note
+			}
+		}]);
+		dbRun(store.db, "INSERT OR REPLACE INTO task_attempts(block_id, date, payload) VALUES(?, ?, ?)", block.id, date, JSON.stringify({
+			...attempt,
+			actualMinutes: attempt.actualMinutes
+		}));
+	}
+	return result;
 }
 function json(res, body, status = 200) {
 	res.writeHead(status, {
 		"content-type": "application/json; charset=utf-8",
-		"access-control-allow-origin": "*"
+		"access-control-allow-origin": "*",
+		"access-control-allow-headers": "content-type",
+		"access-control-allow-methods": "GET,POST,OPTIONS"
 	});
 	res.end(JSON.stringify(body));
 }
@@ -627,65 +748,73 @@ function parseMiniIntake(text) {
 	}
 	return out;
 }
+function ok(body) {
+	return {
+		ok: true,
+		version: 1,
+		data: body
+	};
+}
 function route(req, res, pathname) {
 	const path = pathname.replace(/\/+$/, "") || "/";
+	if (req.method === "OPTIONS") {
+		json(res, { ok: true });
+		return;
+	}
 	if (req.method === "GET" && path === "/") {
 		if ((req.headers.accept ?? "").includes("text/html")) {
 			res.writeHead(200, { "content-type": "text/plain; charset=utf-8" });
 			res.end([
 				"Stone* Planner engine  v1",
-				`date ${dateIso()}`,
-				`goals ${store.engine.goals.length} · attempts ${store.engine.attempts.length}`,
-				`GET  /api/planner/state`,
-				`POST /api/planner/replan`,
-				`POST /api/planner/feedback`,
-				`POST /api/planner/intake`
+				`date ${dateIso()} · now ${nowTime()}`,
+				`goals ${store.engine.goals.length} · plans ${Object.keys(store.engine.plans).length} · attempts ${store.engine.attempts.length}`,
+				`db ${sqliteAvailable ? "sqlite" : "json"}`,
+				"",
+				"  Say: POST /api/tasks         { text: 'review notes 40min P1' }",
+				"       POST /api/content-replan { events: [...] }",
+				"       POST /api/content-feedback { attempt: {...} }",
+				"  View: GET  /api/today        today's plan",
+				"        GET  /api/week         next 7 days",
+				"        GET  /api/events       event log"
 			].join("\n"));
 			return;
 		}
-		json(res, {
-			ok: true,
-			status: statusOf(store.engine, dateIso())
-		});
+		json(res, ok({ status: statusOf(store.engine, dateIso()) }));
 		return;
 	}
 	if (req.method === "GET" && path === "/api/planner/state") {
-		json(res, {
-			ok: true,
-			version: 1,
-			data: store.engine
-		});
+		json(res, ok(store.engine));
 		return;
 	}
-	if (req.method === "POST" && path === "/api/planner/replan") {
-		readBody(req).then((body) => {
-			json(res, {
-				ok: true,
-				version: 1,
-				data: fold(body.events ?? [])
-			});
-		});
+	if (req.method === "GET" && path === "/api/today") {
+		const today = dateIso();
+		json(res, ok({
+			date: today,
+			plan: store.engine.plans[today] ?? planDay({
+				date: today,
+				goals: store.engine.goals,
+				behavior: store.engine.behavior
+			}),
+			now: nowTime()
+		}));
 		return;
 	}
-	if (req.method === "POST" && path === "/api/planner/feedback") {
-		readBody(req).then((body) => {
-			const attempt = body.attempt;
-			if (!attempt || !attempt.blockId) {
-				json(res, {
-					ok: false,
-					error: "No attempt payload."
-				}, 400);
-				return;
-			}
-			json(res, {
-				ok: true,
-				version: 1,
-				data: recordAttempt(attempt)
-			});
-		});
+	if (req.method === "GET" && path === "/api/week") {
+		const week = {};
+		for (let i = 0; i < 7; i++) {
+			const iso = dateIso(i);
+			const plan = store.engine.plans[iso];
+			week[iso] = {
+				date: iso,
+				blocks: plan?.blocks ?? [],
+				totalMinutes: plan?.blocks.reduce((s, b) => s + b.minutes, 0) ?? 0,
+				open: plan?.blocks.filter((b) => b.status !== "done" && b.status !== "skipped").length ?? 0
+			};
+		}
+		json(res, ok(week));
 		return;
 	}
-	if (req.method === "POST" && path === "/api/planner/intake") {
+	if (req.method === "POST" && (path === "/api/tasks" || path === "/api/planner/intake")) {
 		readBody(req).then((body) => {
 			const parsed = parseMiniIntake(String(body.text ?? ""));
 			if (!parsed.length) {
@@ -696,17 +825,55 @@ function route(req, res, pathname) {
 				return;
 			}
 			const now = /* @__PURE__ */ new Date();
-			json(res, {
-				ok: true,
-				version: 1,
-				data: fold(parsed.map((t) => ({
-					type: "urgent_add",
-					goal: makeAdHocGoal(t, now),
-					at: now.toISOString()
-				}))),
-				added: parsed
+			const engine = fold(parsed.map((t) => ({
+				type: "urgent_add",
+				goal: makeAdHocGoal(t, now),
+				at: now.toISOString()
+			})));
+			for (const t of parsed) logEvent({
+				kind: "task_add",
+				task: t
 			});
+			json(res, ok({
+				engine,
+				added: parsed
+			}));
 		});
+		return;
+	}
+	if (req.method === "POST" && (path === "/api/events" || path === "/api/planner/replan")) {
+		readBody(req).then((body) => {
+			const events = body.events ?? [];
+			for (const e of events) logEvent(e);
+			json(res, ok(fold(events)));
+		});
+		return;
+	}
+	if (req.method === "POST" && (path === "/api/feedback" || path === "/api/planner/feedback")) {
+		readBody(req).then((body) => {
+			const attempt = body.attempt;
+			if (!attempt || !attempt.blockId) {
+				json(res, {
+					ok: false,
+					error: "No attempt payload."
+				}, 400);
+				return;
+			}
+			const engine = recordAttempt(attempt);
+			logEvent({
+				kind: "feedback",
+				blockId: attempt.blockId,
+				energy: attempt.energy
+			});
+			json(res, ok(engine));
+		});
+		return;
+	}
+	if (req.method === "GET" && path === "/api/events") {
+		json(res, ok({
+			recent: eventLog.slice(-50).reverse(),
+			db: sqliteAvailable
+		}));
 		return;
 	}
 	json(res, {
@@ -734,14 +901,16 @@ createServer((req, res) => {
 	console.log("\n  Stone* Planner engine  (v1)");
 	console.log("  -----------------------------");
 	console.log("  listening  http://" + HOST + ":" + PORT);
-	console.log("  state file " + STATE_FILE);
+	console.log("  memory     " + (sqliteAvailable ? DB_FILE + " (SQLite)" : "state.json"));
 	console.log("  goals: " + state.goals.length + " · plans: " + Object.keys(state.plans).length + " · attempts: " + state.attempts.length);
 	console.log("  today: " + day.blocks.length + " blocks · next: " + (state.nextActions[today] ?? "—"));
 	console.log("  -----------------------------");
-	console.log("  GET  /api/planner/state      current EngineState");
-	console.log("  POST /api/planner/replan     { events: [...] }");
-	console.log("  POST /api/planner/feedback   { attempt: {...} }");
-	console.log("  POST /api/planner/intake     { text: 'review notes 40min P1' }");
+	console.log("  POST /api/tasks         add tasks from a sentence");
+	console.log("  POST /api/events        push EngineEvents (replan, start, complete…)");
+	console.log("  POST /api/feedback      record a task attempt");
+	console.log("  GET  /api/today         today's plan");
+	console.log("  GET  /api/week          next 7 days");
+	console.log("  GET  /api/planner/state full EngineState");
 	console.log("  press Ctrl+C to stop\n");
 });
 //#endregion

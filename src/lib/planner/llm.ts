@@ -1,5 +1,6 @@
 import { z } from "zod";
-import type { GoalPriority, TaskBlock } from "./types";
+import type { Goal, GoalPriority, TaskBlock } from "./types";
+import type { ToolProposal } from "./tools";
 
 const MODEL = process.env.GEMINI_MODEL ?? "gemini-2.0-flash";
 
@@ -185,4 +186,78 @@ export async function explainWhyNow(block: TaskBlock, planDate: string): Promise
     }
   }
   return null;
+}
+
+/* ------------------------------- orchestrator ------------------------------ */
+
+const toolCallSchema = z.object({
+  tool: z.enum(["add_goal", "set_priority", "set_weekly_target", "schedule_now"]),
+  args: z.record(z.string(), z.unknown()),
+});
+
+const oracleSchema = z.object({
+  actions: z.array(toolCallSchema).max(8),
+});
+
+const ORCHESTRATE_PROMPT = (request: string, snapshot: string) =>
+  `You are the planner's PRINCIPAL. Understand the user's request and choose tools to pass to the deterministic scheduling engine. You NEVER edit the schedule yourself — you only propose trusted tool calls the engine validates.
+
+Today's snapshot (goals + today's plan):
+${snapshot}
+
+Available tools (ONLY these):
+- add_goal      args: { title, durationMinutes?, priority?, deadline?, project? }
+- set_priority  args: { goalId, priority }
+- set_weekly_target args: { goalId, sessions, minutes }
+- schedule_now  args: {}            (replane the day)
+
+Rules:
+- Convert natural-language adds into add_goal calls. Lead with a concise imperative single title per goal.
+- Infer duration from wording (minutes or hours); default 30. priority = 1 highest, 3 lowest.
+- Use ISO dates YYYY-MM-DD for deadlines only if the user states one.
+- Prefer the fewest, most meaningful calls. If nothing is actionable, return actions: [].
+- Respond ONLY with JSON: {"actions":[{ "tool": "...", "args": {...} }]}`;
+
+/**
+ * Gemini as PRINCIPAL: turns natural language into whitelisted tool-call
+ * proposals. Returns null on any failure/timeout so the deterministic fast
+ * path always wins and the UI never waits on the cloud round-trip.
+ */
+export async function orchestrate(
+  request: string,
+  snapshot: string,
+): Promise<ToolProposal[] | null> {
+  if (!hasAI || !request.trim()) return null;
+  const prompt = ORCHESTRATE_PROMPT(request, snapshot);
+  try {
+    const raw = await geminiJson(prompt, {
+      type: "OBJECT",
+      properties: {
+        actions: {
+          type: "ARRAY",
+          items: {
+            type: "OBJECT",
+            properties: {
+              tool: { type: "STRING", enum: ["add_goal", "set_priority", "set_weekly_target", "schedule_now"] },
+              args: { type: "OBJECT" },
+            },
+            required: ["tool", "args"],
+          },
+        },
+      },
+      required: ["actions"],
+    });
+    const parsed = oracleSchema.safeParse(raw);
+    if (!parsed.success) return null;
+    return parsed.data.actions.filter((a) => a.tool);
+  } catch {
+    return null;
+  }
+}
+
+export function planSnapshot(goals: Goal[]): string {
+  const lines = goals
+    .filter((g) => g.active)
+    .map((g) => `- ${g.title} (P${g.priority}, ${g.defaultDuration}min${g.deadline ? `, due ${g.deadline}` : ""})`);
+  return lines.length ? lines.join("\n") : "(no active goals)";
 }

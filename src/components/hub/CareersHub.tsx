@@ -7,6 +7,7 @@ import {
   Languages,
   CalendarCheck,
   ChevronRight,
+  Instagram,
 } from "lucide-react";
 
 const BAGS = [
@@ -48,6 +49,14 @@ const BAGS = [
     title: "Day Planner",
     subtitle: "Goals → plan → act → learn",
     count: "Engine-planned days",
+    accent: false,
+  },
+  {
+    id: "instagram" as const,
+    icon: Instagram,
+    title: "Instagram Growth",
+    subtitle: "Course roadmap · 15 sections",
+    count: "Video playlists",
     accent: false,
   },
 ];

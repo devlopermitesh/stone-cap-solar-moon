@@ -55,6 +55,19 @@ export function defaultGoals(now = new Date()): Goal[] {
       createdAt: t,
       updatedAt: t,
     },
+    {
+      id: "instagram",
+      title: "Instagram growth & marketing",
+      source: "instagram",
+      kind: "curriculum",
+      dataRef: "instagram-plan",
+      weeklyTarget: { sessions: 3, minutes: 90 },
+      defaultDuration: 30,
+      priority: 2,
+      active: true,
+      createdAt: t,
+      updatedAt: t,
+    },
   ];
 }
 
