@@ -5,7 +5,8 @@ import { SmmScreen } from "./smm/SmmScreen";
 import { DsaApp } from "./dsa/DsaApp";
 import { EnglishApp } from "./english/EnglishApp";
 import { PlannerApp } from "@/components/planner/PlannerApp";
-import { InstagramScreen } from "./instagram/InstagramScreen";
+import { InstagramApp } from "./instagram/InstagramApp";
+import { SystemDesignApp } from "./system-design/SystemDesignApp";
 import { QuestionView } from "@/components/quiz/QuestionView";
 import { ResultsScreen } from "@/components/quiz/ResultsScreen";
 import { ShortQuestionView } from "@/components/quiz/ShortQuestionView";
@@ -20,7 +21,8 @@ export function InterviewApp() {
   if (activeBag === "dsa") return <DsaApp />;
   if (activeBag === "english") return <EnglishApp />;
   if (activeBag === "planner") return <PlannerApp />;
-  if (activeBag === "instagram") return <InstagramScreen />;
+  if (activeBag === "instagram") return <InstagramApp />;
+  if (activeBag === "system-design") return <SystemDesignApp />;
 
   return (
     <main className="min-h-dvh bg-bg text-fg">

@@ -8,6 +8,7 @@ import {
   CalendarCheck,
   ChevronRight,
   Instagram,
+  Network,
 } from "lucide-react";
 
 const BAGS = [
@@ -55,8 +56,16 @@ const BAGS = [
     id: "instagram" as const,
     icon: Instagram,
     title: "Instagram Growth",
-    subtitle: "Course roadmap · 15 sections",
-    count: "Video playlists",
+    subtitle: "Calendar · 50 questions · 5 levels",
+    count: "30-day prep plan",
+    accent: false,
+  },
+  {
+    id: "system-design" as const,
+    icon: Network,
+    title: "System Design",
+    subtitle: "Calendar · 50 questions · 5 levels",
+    count: "30-day prep plan",
     accent: false,
   },
 ];
@@ -116,8 +125,9 @@ export function CareersHub() {
       <p className="text-center text-xs text-subtle">
         Fullstack routes to the existing CBT test · Social Media Manager is a new
         Q&amp;A flow · DSA opens a roadmap with calendar, videos, and problems ·
-        English Fluency is a watch-based calendar with a daily goal · Day Planner
-        turns all of it into an engine-planned day with a next-action card.
+        English Fluency is a watch-based calendar with a daily goal ·
+        Instagram and System Design are 50-question tracks with a calendar and a
+        30-day plan · Day Planner turns all of it into an engine-planned day.
       </p>
     </div>
   );

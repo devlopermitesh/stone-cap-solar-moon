@@ -377,8 +377,27 @@ export function applyEvent(engine: EngineState, event: EngineEvent): EngineState
   }
 }
 
+export function migrateGoals(engine: EngineState): EngineState {
+  const defaults = defaultGoals();
+  const have = new Set(engine.goals.map((g) => g.id));
+  const missing = defaults.filter((d) => !have.has(d.id));
+  const staleInstagram = engine.goals.some(
+    (g) => g.id === "instagram" && g.dataRef === "instagram-plan",
+  );
+  if (missing.length === 0 && !staleInstagram) return engine;
+  const now = new Date().toISOString();
+  const goals = engine.goals
+    .map((g) =>
+      g.id === "instagram" && g.dataRef === "instagram-plan"
+        ? { ...g, dataRef: "instagram-study-path", updatedAt: now }
+        : g,
+    )
+    .concat(missing);
+  return { ...engine, goals, version: PLAN_VERSION, updatedAt: now };
+}
+
 export function applyEvents(engine: EngineState, events: EngineEvent[]): EngineState {
-  let next = engine;
+  let next = migrateGoals(engine);
   for (const ev of events) next = applyEvent(next, ev);
   return next;
 }

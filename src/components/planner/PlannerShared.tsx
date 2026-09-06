@@ -1,5 +1,14 @@
 import type { ReactNode } from "react";
-import { Code2, GraduationCap, Languages, Rocket, Sparkles, Timer } from "lucide-react";
+import {
+  Camera,
+  Code2,
+  GraduationCap,
+  Languages,
+  Network,
+  Rocket,
+  Sparkles,
+  Timer,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Goal, GoalSource, TaskBlock, TaskBlockStatus } from "@/lib/planner/types";
 
@@ -14,6 +23,10 @@ export function goalIcon(source: GoalSource, className = "size-5") {
       return <Rocket className={cls} strokeWidth={1.75} />;
     case "fullstack":
       return <Code2 className={cls} strokeWidth={1.75} />;
+    case "instagram":
+      return <Camera className={cls} strokeWidth={1.75} />;
+    case "system-design":
+      return <Network className={cls} strokeWidth={1.75} />;
     default:
       return <Sparkles className={cls} strokeWidth={1.75} />;
   }
@@ -29,6 +42,10 @@ export function sourceLabel(source: GoalSource): string {
       return "SMM";
     case "fullstack":
       return "Fullstack";
+    case "instagram":
+      return "Instagram";
+    case "system-design":
+      return "System Design";
     default:
       return "Task";
   }

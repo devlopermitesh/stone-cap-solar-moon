@@ -1,7 +1,16 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type BagId = "fullstack" | "smm" | "dsa" | "english" | "planner" | "instagram" | null;
+export type BagId =
+  | "fullstack"
+  | "smm"
+  | "dsa"
+  | "english"
+  | "planner"
+  | "instagram"
+  | "system-design"
+  | null;
+export type TrackScreen = "home" | "calendar" | "today" | "questions" | null;
 export type DsaScreen =
   | "home"
   | "calendar"
@@ -23,6 +32,8 @@ type HubState = {
   activeBag: BagId;
   dsaScreen: DsaScreen;
   englishScreen: EnglishScreen;
+  instagramScreen: TrackScreen;
+  systemDesignScreen: TrackScreen;
   plannerScreen: PlannerScreen;
   selectedDay: number | null;
   selectedTopic: string | undefined;
@@ -30,6 +41,8 @@ type HubState = {
   back: () => void;
   setDsaScreen: (screen: DsaScreen) => void;
   setEnglishScreen: (screen: EnglishScreen) => void;
+  setInstagramScreen: (screen: TrackScreen) => void;
+  setSystemDesignScreen: (screen: TrackScreen) => void;
   setPlannerScreen: (screen: PlannerScreen) => void;
   setSelectedDay: (day: number | null) => void;
   setSelectedTopic: (topic: string | undefined) => void;
@@ -40,6 +53,8 @@ export const useInterview = create<HubState>((set, get) => ({
   activeBag: null,
   dsaScreen: null,
   englishScreen: null,
+  instagramScreen: null,
+  systemDesignScreen: null,
   plannerScreen: "home",
   selectedDay: null,
   selectedTopic: undefined,
@@ -50,12 +65,16 @@ export const useInterview = create<HubState>((set, get) => ({
       set({ activeBag: bag, englishScreen: "home", dsaScreen: null, selectedDay: null, selectedTopic: undefined });
     } else if (bag === "planner") {
       set({ activeBag: bag, plannerScreen: "home", dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined });
+    } else if (bag === "instagram") {
+      set({ activeBag: bag, instagramScreen: "home", dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined });
+    } else if (bag === "system-design") {
+      set({ activeBag: bag, systemDesignScreen: "home", dsaScreen: null, englishScreen: null, selectedDay: null, selectedTopic: undefined });
     } else {
       set({ activeBag: bag, dsaScreen: null, englishScreen: null });
     }
   },
   back: () => {
-    const { dsaScreen, englishScreen, plannerScreen, activeBag } = get();
+    const { dsaScreen, englishScreen, plannerScreen, instagramScreen, systemDesignScreen, activeBag } = get();
     if (activeBag === "dsa") {
       if (dsaScreen === "video") set({ dsaScreen: "playlist" });
       else if (dsaScreen === "today" && get().selectedTopic) {
@@ -69,6 +88,14 @@ export const useInterview = create<HubState>((set, get) => ({
       else if (englishScreen === "today") set({ englishScreen: "calendar" });
       else if (englishScreen === "playlist") set({ englishScreen: "today" });
       else set({ activeBag: null, englishScreen: null, selectedTopic: undefined });
+    } else if (activeBag === "instagram") {
+      if (instagramScreen === "today") set({ instagramScreen: "calendar" });
+      else if (instagramScreen === "questions") set({ instagramScreen: "today" });
+      else set({ activeBag: null, instagramScreen: null, selectedDay: null });
+    } else if (activeBag === "system-design") {
+      if (systemDesignScreen === "today") set({ systemDesignScreen: "calendar" });
+      else if (systemDesignScreen === "questions") set({ systemDesignScreen: "today" });
+      else set({ activeBag: null, systemDesignScreen: null, selectedDay: null });
     } else if (activeBag === "planner") {
       if (plannerScreen !== "home") set({ plannerScreen: "home" });
       else set({ activeBag: null, plannerScreen: "home", selectedDay: null, selectedTopic: undefined });
@@ -78,6 +105,8 @@ export const useInterview = create<HubState>((set, get) => ({
   },
   setDsaScreen: (screen) => set({ dsaScreen: screen }),
   setEnglishScreen: (screen) => set({ englishScreen: screen }),
+  setInstagramScreen: (screen) => set({ instagramScreen: screen }),
+  setSystemDesignScreen: (screen) => set({ systemDesignScreen: screen }),
   setPlannerScreen: (screen) => set({ plannerScreen: screen }),
   setSelectedDay: (day) => set({ selectedDay: day }),
   setSelectedTopic: (topic) => set({ selectedTopic: topic }),
@@ -94,7 +123,7 @@ type TrackingState = {
   seenVideos: Record<string, string>;
   completedVideos: Record<string, string>;
   reminder: Reminder;
-  tossProblem: (id: number) => void;
+  tossProblem: (key: string) => void;
   toggleVideoSeen: (id: string, url: string) => void;
   toggleVideoComplete: (id: string, url: string) => void;
   setReminder: (reminder: Reminder) => void;
@@ -107,9 +136,8 @@ export const useTracking = create<TrackingState>()(
       seenVideos: {},
       completedVideos: {},
       reminder: { enabled: false, time: "18:00" },
-      tossProblem: (id) =>
+      tossProblem: (key) =>
         set((s) => {
-          const key = String(id);
           const next = { ...s.completedProblems };
           if (next[key]) delete next[key];
           else next[key] = new Date().toISOString();
