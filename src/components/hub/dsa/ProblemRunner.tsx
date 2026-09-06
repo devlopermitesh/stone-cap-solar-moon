@@ -179,7 +179,7 @@ export function ProblemRunner({
           <span className="text-muted">{done ? "Marked done" : "Finished it?"}</span>
           <button
             type="button"
-            onClick={() => tossProblem(problem.id)}
+            onClick={() => tossProblem(String(problem.id))}
             className={cn(
               "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
               done

@@ -1,0 +1,124 @@
+{
+  "title": "System Design: Learn the Connected Ideas",
+  "description": "A 12-week teacher-guided sequence. Each week pairs a core system-design topic with the prerequisite knowledge that makes design decisions meaningful.",
+  "studyRhythm": {
+    "sessionsPerWeek": 4,
+    "sessionFormat": [
+      "Learn one concept from a video or article (45–60 min).",
+      "Explain it in your own words and draw the request/data flow (20 min).",
+      "Apply it to a small design prompt and state one trade-off (30–45 min).",
+      "Review with one failure scenario: traffic spike, node failure, stale data, or slow dependency (20 min)."
+    ]
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "topic": "How systems communicate",
+      "learnTogether": ["HTTP lifecycle", "DNS", "TCP vs UDP", "latency, bandwidth, throughput"],
+      "outcome": "Trace a browser request from URL entry to a response and estimate its bottleneck.",
+      "practice": "Design the request path for a simple read-only profile page.",
+      "resources": ["Hussein Nasser", "Gaurav Sen"]
+    },
+    {
+      "week": 2,
+      "topic": "Back-of-the-envelope estimation",
+      "learnTogether": ["QPS", "storage growth", "peak vs average traffic", "latency budget"],
+      "outcome": "Turn vague requirements into numbers before choosing components.",
+      "practice": "Estimate 10 million daily users uploading one 2 MB photo each.",
+      "resources": ["ByteByteGo", "Gaurav Sen"]
+    },
+    {
+      "week": 3,
+      "topic": "Scaling stateless services",
+      "learnTogether": ["vertical vs horizontal scaling", "load balancers", "health checks", "sessions"],
+      "outcome": "Choose a load-balancing strategy and explain why application instances should usually be stateless.",
+      "practice": "Scale a URL-shortener read API from one server to many.",
+      "resources": ["Gaurav Sen", "Tech Dummies Narendra L"]
+    },
+    {
+      "week": 4,
+      "topic": "Data modeling and databases",
+      "learnTogether": ["indexes", "normalization", "SQL vs NoSQL", "primary and replica nodes"],
+      "outcome": "Pick a storage model from access patterns instead of brand names.",
+      "practice": "Model users, posts, follows, and a timeline query for a social app.",
+      "resources": ["Arpit Bhayani", "Hussein Nasser"]
+    },
+    {
+      "week": 5,
+      "topic": "Caching",
+      "learnTogether": ["cache-aside", "TTL", "eviction", "cache invalidation", "hot keys"],
+      "outcome": "Place a cache safely and describe what happens on a miss, expiry, and outage.",
+      "practice": "Design a product-details cache with a stale-data policy.",
+      "resources": ["Arpit Bhayani", "ByteByteGo"]
+    },
+    {
+      "week": 6,
+      "topic": "Partitioning and consistent hashing",
+      "learnTogether": ["sharding keys", "range vs hash partitioning", "rebalancing", "data hotspots"],
+      "outcome": "Choose a partition key and identify its uneven-load risks.",
+      "practice": "Shard a multi-tenant message store by tenant and conversation.",
+      "resources": ["Gaurav Sen", "Arpit Bhayani"]
+    },
+    {
+      "week": 7,
+      "topic": "Replication and consistency",
+      "learnTogether": ["leader/follower replication", "quorums", "eventual consistency", "conflicts"],
+      "outcome": "State the consistency a feature needs and its user-visible compromise.",
+      "practice": "Design a read-replica strategy for inventory without overselling.",
+      "resources": ["Gaurav Sen", "Hussein Nasser"]
+    },
+    {
+      "week": 8,
+      "topic": "Asynchronous work and queues",
+      "learnTogether": ["producers/consumers", "at-least-once delivery", "idempotency", "dead-letter queues"],
+      "outcome": "Move slow work off the request path while keeping retries safe.",
+      "practice": "Design image processing after a user uploads a photo.",
+      "resources": ["Gaurav Sen", "Arpit Bhayani"]
+    },
+    {
+      "week": 9,
+      "topic": "Reliability and resilience",
+      "learnTogether": ["timeouts", "retries", "circuit breakers", "rate limiting", "graceful degradation"],
+      "outcome": "Prevent one slow dependency from causing a cascading failure.",
+      "practice": "Protect a payment checkout flow when the payment provider is slow.",
+      "resources": ["Hussein Nasser", "ByteByteGo"]
+    },
+    {
+      "week": 10,
+      "topic": "Observability and operations",
+      "learnTogether": ["logs", "metrics", "traces", "SLIs/SLOs", "capacity planning"],
+      "outcome": "Define how you will detect, diagnose, and measure a bad user experience.",
+      "practice": "Specify dashboards and alerts for a notification service.",
+      "resources": ["Hussein Nasser", "Arpit Bhayani"]
+    },
+    {
+      "week": 11,
+      "topic": "Security and API design",
+      "learnTogether": ["authentication vs authorization", "TLS", "rate limits", "pagination", "idempotency keys"],
+      "outcome": "Design an API that is safe, evolvable, and realistic under retries.",
+      "practice": "Draft create-payment and get-payment endpoints with error behavior.",
+      "resources": ["Hussein Nasser", "Tech Dummies Narendra L"]
+    },
+    {
+      "week": 12,
+      "topic": "Full design practice",
+      "learnTogether": ["requirements", "estimation", "high-level design", "deep dives", "trade-offs"],
+      "outcome": "Lead a structured 45-minute system-design answer without jumping prematurely into tools.",
+      "practice": "Design one of: URL shortener, news feed, chat service, video platform, or ride matching.",
+      "resources": ["codeKarle", "ByteByteGo", "Gaurav Sen"]
+    }
+  ],
+  "interviewAnswerFramework": [
+    "Clarify users, core actions, scale, latency, and consistency expectations.",
+    "Estimate traffic, storage, and peak load.",
+    "Draw the simplest end-to-end design first.",
+    "Deep dive into the one or two components that become bottlenecks.",
+    "Name trade-offs, failure modes, and observability before closing."
+  ],
+  "avoid": [
+    "Memorizing diagrams without explaining the workload that requires each component.",
+    "Using microservices, Kafka, sharding, or Redis by default rather than from a stated need.",
+    "Ignoring data consistency, retries, and failure behavior."
+  ]
+}
+

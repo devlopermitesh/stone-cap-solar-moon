@@ -4,6 +4,7 @@ export const GOAL_SOURCES = [
   "smm",
   "fullstack",
   "instagram",
+  "system-design",
   "custom",
 ] as const;
 

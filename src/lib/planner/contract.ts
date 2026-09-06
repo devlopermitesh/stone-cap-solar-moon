@@ -1,6 +1,6 @@
 import type { EngineState } from "./types";
 
-export const PLAN_VERSION = 1;
+export const PLAN_VERSION = 2;
 
 export const DEFAULT_ENGINE_PORT = 8787;
 

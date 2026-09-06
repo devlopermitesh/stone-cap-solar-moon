@@ -23,6 +23,8 @@ export function PlannerHome() {
   const setPlannerScreen = useInterview((s) => s.setPlannerScreen);
   const setDsaScreen = useInterview((s) => s.setDsaScreen);
   const setEnglishScreen = useInterview((s) => s.setEnglishScreen);
+  const setInstagramScreen = useInterview((s) => s.setInstagramScreen);
+  const setSystemDesignScreen = useInterview((s) => s.setSystemDesignScreen);
   const open = useInterview((s) => s.open);
 
   const engine = usePlanner((s) => s.engine);
@@ -76,6 +78,12 @@ export function PlannerHome() {
       open("english");
     } else if (src === "smm" || src === "fullstack") {
       open(src);
+    } else if (src === "instagram") {
+      setInstagramScreen("today");
+      open("instagram");
+    } else if (src === "system-design") {
+      setSystemDesignScreen("today");
+      open("system-design");
     }
   }
 
